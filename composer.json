@@ -1,16 +1,18 @@
 {
   "name": "silvermoon/development",
-  "type": "development"
+  "type": "development",
   "description": "silvermoon framework development package",
   "keywords": ["framework"],
+  "homepage": "https://silvermoon.tech",
   "license": "MIT",
   "authors": [
     {
-      "name": "Timo Poppinga"
+      "name": "Timo Poppinga",
+      "email": "timo@silvermoon.tech"
     }
   ],
   "require": {
-    "php": "7.4.*"
+    "php": "~7.4.2"
   },
   "require-dev": {
   },
