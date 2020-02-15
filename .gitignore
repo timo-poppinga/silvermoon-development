@@ -1,0 +1,19 @@
+# OS
+
+
+# IDE
+.idea/
+
+# composer
+/bin/
+/vendor/
+
+# cache and case files
+.php_cs.cache
+.phpunit.result.cache
+
+# build
+/artifacts/
+
+# development
+/examples
