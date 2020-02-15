@@ -1,0 +1,20 @@
+{
+  "name": "silvermoon/development",
+  "type": "development"
+  "description": "silvermoon framework development package",
+  "keywords": ["framework"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Timo Poppinga"
+    }
+  ],
+  "require": {
+    "php": "7.4.*"
+  },
+  "require-dev": {
+  },
+  "config": {
+    "bin-dir": "bin"
+  }
+}
