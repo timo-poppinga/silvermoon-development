@@ -9,6 +9,6 @@ class FirstTest extends BaseUnitTest
 {
     public function testFirst()
     {
-        $this->assertSame('Hello', 'Hello2');
+        $this->assertSame('Hello', 'Hello');
     }
 }
