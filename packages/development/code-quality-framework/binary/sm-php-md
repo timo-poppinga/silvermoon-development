@@ -2,6 +2,6 @@
 
 docker run --rm -ti -v ${PWD}:/opt/project \
    -w /opt/project \
-   silvermoonframework/php-7.4-xdebug:latest \
+   silvermoonframework/php-7.4:latest \
    bin/phpmd packages/ text cleancode
 
