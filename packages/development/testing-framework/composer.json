@@ -19,5 +19,8 @@
     "psr-4": {
       "Silvermoon\\TestingFramework\\": "src/"
     }
-  }
+  },
+  "bin": [
+    "binary/sm-php-unit"
+  ]
 }

@@ -1554,12 +1554,15 @@
             "dist": {
                 "type": "path",
                 "url": "packages/development/testing-framework",
-                "reference": "1002e768859819d27c9c8a9a0e119938548d5e28"
+                "reference": "dc503697c00ca88a54dddd282ad8b374667856e5"
             },
             "require": {
                 "php": "~7.4.2",
                 "phpunit/phpunit": "~9.0.0"
             },
+            "bin": [
+                "binary/sm-php-unit"
+            ],
             "type": "silvermoon-development",
             "autoload": {
                 "psr-4": {
