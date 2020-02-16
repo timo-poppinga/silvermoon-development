@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Silvermoon\Contracts\DependencyInjection;
+namespace Silvermoon\Contracts\Injection;
 
 /**
  * Interface SingletonInterface

@@ -1,0 +1,24 @@
+{
+  "name": "silvermoon/injection",
+  "type": "silvermoon-component",
+  "description": "Injection",
+  "keywords": ["framework"],
+  "homepage": "https://silvermoon.tech",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Timo Poppinga",
+      "email": "timo@silvermoon.tech"
+    }
+  ],
+  "require": {
+    "php": "~7.4.2",
+    "silvermoon/injection-contracts": "*",
+    "silvermoon/exception": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Silvermoon\\Injection\\": "src/"
+    }
+  }
+}

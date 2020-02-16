@@ -7,6 +7,7 @@ $finder = PhpCsFixer\Finder::create();
 $finder->in([
     'packages/contracts/**/src',
     'packages/development/**/src',
+    'packages/component/**/src',
 
     'tests'
 ]);

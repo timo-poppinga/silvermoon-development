@@ -3,4 +3,4 @@ includes:
 
 parameters:
   excludes_analyse:
-    - '%currentWorkingDirectory%/packages/implementations/dependency-injection-contracts/src/ContainerInterface.php'
+    - '%currentWorkingDirectory%/packages/implementations/injection-contracts/src/ContainerInterface.php'

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "93512f9a747ad686c8e8923058fa51c9",
+    "content-hash": "f785ccf5a03bde4724f2f77c4c4d84f7",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -1517,20 +1517,20 @@
             ]
         },
         {
-            "name": "silvermoon/dependency-injection-contracts",
+            "name": "silvermoon/exception",
             "version": "dev-master",
             "dist": {
                 "type": "path",
-                "url": "packages/contracts/dependency-injection-contracts",
-                "reference": "efa512c1b7f439ca1a089d91041a802a1d491d96"
+                "url": "packages/component/exception",
+                "reference": "37061b01d2ece1881995fe2fdf47508f18f1990f"
             },
             "require": {
                 "php": "~7.4.2"
             },
-            "type": "silvermoon-contracts",
+            "type": "silvermoon-component",
             "autoload": {
                 "psr-4": {
-                    "Silvermoon\\Contracts\\DependencyInjection\\": "src/"
+                    "Silvermoon\\Exception\\": "src/"
                 }
             },
             "license": [
@@ -1542,7 +1542,73 @@
                     "email": "timo@silvermoon.tech"
                 }
             ],
-            "description": "Contracts of dependency-injection",
+            "description": "Exception collection",
+            "homepage": "https://silvermoon.tech",
+            "keywords": [
+                "framework"
+            ]
+        },
+        {
+            "name": "silvermoon/injection",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "packages/component/injection",
+                "reference": "502aefb053ca6a31ee5260db2010ba6a3387d25a"
+            },
+            "require": {
+                "php": "~7.4.2",
+                "silvermoon/exception": "*",
+                "silvermoon/injection-contracts": "*"
+            },
+            "type": "silvermoon-component",
+            "autoload": {
+                "psr-4": {
+                    "Silvermoon\\Injection\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Timo Poppinga",
+                    "email": "timo@silvermoon.tech"
+                }
+            ],
+            "description": "Injection",
+            "homepage": "https://silvermoon.tech",
+            "keywords": [
+                "framework"
+            ]
+        },
+        {
+            "name": "silvermoon/injection-contracts",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "packages/contracts/injection-contracts",
+                "reference": "11f88f306389674c5f3f5e09a51c6033eec50ae1"
+            },
+            "require": {
+                "php": "~7.4.2"
+            },
+            "type": "silvermoon-contracts",
+            "autoload": {
+                "psr-4": {
+                    "Silvermoon\\Contracts\\Injection\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Timo Poppinga",
+                    "email": "timo@silvermoon.tech"
+                }
+            ],
+            "description": "Contracts of injection",
             "homepage": "https://silvermoon.tech",
             "keywords": [
                 "framework"
@@ -3344,7 +3410,9 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "silvermoon/dependency-injection-contracts": 20,
+        "silvermoon/injection-contracts": 20,
+        "silvermoon/injection": 20,
+        "silvermoon/exception": 20,
         "silvermoon/testing-framework": 20,
         "silvermoon/code-quality-framework": 20,
         "friendsofphp/php-cs-fixer": 20,
