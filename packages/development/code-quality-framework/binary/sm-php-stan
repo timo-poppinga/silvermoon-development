@@ -3,5 +3,7 @@
 docker run --rm -ti -v ${PWD}:/opt/project \
    -w /opt/project \
    silvermoonframework/php-7.4:latest \
-   bin/phpstan analyse --level max packages/**/**/src
+   bin/phpstan analyse --level max \
+   -c vendor/silvermoon/code-quality-framework/configuration/phpstan.neon \
+   packages/**/**/src
 
