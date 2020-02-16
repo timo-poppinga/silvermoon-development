@@ -29,5 +29,10 @@
   },
   "config": {
     "bin-dir": "bin"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "SilvermoonTests\\DependencyInjection\\": "tests/dependency-injection"
+    }
   }
 }
