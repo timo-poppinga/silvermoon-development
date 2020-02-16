@@ -1,0 +1,25 @@
+{
+  "name": "silvermoon/code-quality-framework",
+  "type": "silvermoon-development",
+  "description": "Code quality framework of the silvermoon framework",
+  "keywords": ["framework"],
+  "homepage": "https://silvermoon.tech",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Timo Poppinga",
+      "email": "timo@silvermoon.tech"
+    }
+  ],
+  "require": {
+    "php": "~7.4.2",
+    "phpstan/phpstan": "^0.12.10",
+    "thecodingmachine/phpstan-strict-rules": "^0.12.0"
+  },
+  "bin": [
+    "binary/sm-php-code-style",
+    "binary/sm-php-code-style-fix",
+    "binary/sm-php-md",
+    "binary/sm-php-stan"
+  ]
+}

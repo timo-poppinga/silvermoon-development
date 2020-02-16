@@ -1,0 +1,7 @@
+#!/bin/bash
+
+docker run --rm -ti -v ${PWD}:/opt/project \
+   -w /opt/project \
+   registry.z3.ag/z3/docker-images/p1295-ci-images/php-7-4-xdebug-libuv:latest \
+   bin/phpunit tests/
+

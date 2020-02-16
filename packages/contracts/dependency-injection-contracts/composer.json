@@ -1,0 +1,22 @@
+{
+  "name": "silvermoon/dependency-injection-contracts",
+  "type": "silvermoon-contracts",
+  "description": "Contracts of dependency-injection",
+  "keywords": ["framework"],
+  "homepage": "https://silvermoon.tech",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Timo Poppinga",
+      "email": "timo@silvermoon.tech"
+    }
+  ],
+  "require": {
+    "php": "~7.4.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Silvermoon\\Contracts\\DependencyInjection\\": "src/"
+    }
+  }
+}

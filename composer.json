@@ -1,4 +1,10 @@
 {
+  "repositories": [
+    {
+      "type": "path",
+      "url": "packages/**/*"
+    }
+  ],
   "name": "silvermoon/development",
   "type": "development",
   "description": "silvermoon framework development package",
@@ -12,9 +18,14 @@
     }
   ],
   "require": {
-    "php": "~7.4.2"
+    "php": "~7.4.2",
+    "silvermoon/dependency-injection-contracts": "@dev",
+    "silvermoon/testing-framework": "@dev",
+    "silvermoon/code-quality-framework": "@dev"
   },
   "require-dev": {
+    "friendsofphp/php-cs-fixer": "3.0.x-dev",
+    "phpmd/phpmd" : "3.x-dev"
   },
   "config": {
     "bin-dir": "bin"

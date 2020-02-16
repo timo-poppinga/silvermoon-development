@@ -1,0 +1,23 @@
+{
+  "name": "silvermoon/testing-framework",
+  "type": "silvermoon-development",
+  "description": "Testing framework of the silvermoon framework",
+  "keywords": ["framework"],
+  "homepage": "https://silvermoon.tech",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Timo Poppinga",
+      "email": "timo@silvermoon.tech"
+    }
+  ],
+  "require": {
+    "php": "~7.4.2",
+    "phpunit/phpunit": "~9.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Silvermoon\\TestingFramework\\": "src/"
+    }
+  }
+}
