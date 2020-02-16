@@ -9,3 +9,5 @@ install:
 
 script:
   - bin/sm-php-code-style
+  - bin/sm-php-md
+  - bin/sm-php-stan
