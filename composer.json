@@ -26,7 +26,9 @@
     "silvermoon/exception": "@dev",
 
     "silvermoon/testing-framework": "@dev",
-    "silvermoon/code-quality-framework": "@dev"
+    "silvermoon/code-quality-framework": "@dev",
+
+    "silvermoon/release": "@dev"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "3.0.x-dev",

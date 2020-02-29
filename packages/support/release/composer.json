@@ -1,7 +1,7 @@
 {
-  "name": "silvermoon/exception",
-  "type": "silvermoon-component",
-  "description": "Silvermoon framework exception collection",
+  "name": "silvermoon/release",
+  "type": "silvermoon-framework-development",
+  "description": "",
   "keywords": ["framework"],
   "homepage": "https://silvermoon.tech",
   "license": "MIT",
@@ -16,7 +16,10 @@
   },
   "autoload": {
     "psr-4": {
-      "Silvermoon\\Exception\\": "src/"
+      "Silvermoon\\Release\\": "src/"
     }
-  }
+  },
+  "bin": [
+    "binary/release"
+  ]
 }

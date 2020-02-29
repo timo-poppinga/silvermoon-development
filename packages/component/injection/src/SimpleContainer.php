@@ -8,7 +8,7 @@ use Silvermoon\Contracts\Injection\SingletonInterface;
 use Silvermoon\Injection\Exception\ClassDoesNotExistsException;
 use Silvermoon\Injection\Exception\ImplementationDoesNotExistsException;
 use Silvermoon\Injection\Exception\InterfaceDoesNotExistsException;
-use Silvermoon\Injection\Exceptionbin\WrongTypeException;
+use Silvermoon\Injection\Exception\WrongTypeException;
 
 /**
  * Class SimpleContainer
@@ -48,7 +48,7 @@ class SimpleContainer implements ContainerInterface
             $interfaceClassName = $dependency['dependency'];
             $optional = $dependency['optional'];
 
-            if ($interfaceClassName === \Z3\Contracts\DependencyInjection\ContainerInterface::class) {
+            if ($interfaceClassName === ContainerInterface::class) {
                 $dependObjects[] = $this;
                 continue;
             }
@@ -96,7 +96,7 @@ class SimpleContainer implements ContainerInterface
     }
 
     /**
-     * @param string $className
+     * @param class-string $className
      * @return array[]
      * @throws WrongTypeException
      */
