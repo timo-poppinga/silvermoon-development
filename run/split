@@ -18,7 +18,9 @@ function remote()
 
 git pull origin $CURRENT_BRANCH
 
-remote exception git@github.com:silvermoon-framework/silvermoon-exception.git
+remote exception git@github.com:silvermoon-framework/exception.git
+remote injection git@github.com:silvermoon-framework/injection.git
 
 split 'packages/component/exception' exception
+split 'packages/component/injection' injection
 
