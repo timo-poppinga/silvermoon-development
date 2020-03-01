@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -e
+set -x
+
+CURRENT_BRANCH="master"
+
+function split()
+{
+    SHA1=`./lib/splitsh-lite --prefix=$1`
+    git push $2 "$SHA1:refs/heads/$CURRENT_BRANCH" -f
+}
+
+function remote()
+{
+    git remote add $1 $2 || true
+}
+
+git pull origin $CURRENT_BRANCH
+
+remote exception git@github.com:silvermoon-framework/silvermoon-exception.git
+
+split 'packages/component/exception' exception
+
