@@ -23,8 +23,14 @@ remote contracts-injection git@github.com:silvermoon-framework/contracts-injecti
 remote exception git@github.com:silvermoon-framework/exception.git
 remote injection git@github.com:silvermoon-framework/injection.git
 
+remote code-quality-framework git@github.com:silvermoon-framework/code-quality-framework.git
+remote testing-framework git@github.com:silvermoon-framework/testing-framework.git
+
 split 'packages/contracts/contracts-injection' contracts-injection
 
 split 'packages/component/exception' exception
 split 'packages/component/injection' injection
+
+split 'packages/development/code-quality-framework' code-quality-framework
+split 'packages/development/testing-framework' testing-framework
 
