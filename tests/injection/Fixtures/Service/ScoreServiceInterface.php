@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace SilvermoonTests\Injection\Fixtures\Service;
 
-class ScoreService implements ScoreServiceInterface
+interface ScoreServiceInterface
 {
-    public int $count = 10;
 }
