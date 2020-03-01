@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fda8e68de25805ee6a6903a6e3185647",
+    "content-hash": "dc98924da5c40a14bfbdd252a59f5d2a",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -1517,6 +1517,38 @@
             ]
         },
         {
+            "name": "silvermoon/contracts-injection",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "packages/contracts/contracts-injection",
+                "reference": "01236438d2d3208d817501b9852cfea6d3280d18"
+            },
+            "require": {
+                "php": "~7.4.2"
+            },
+            "type": "silvermoon-contracts",
+            "autoload": {
+                "psr-4": {
+                    "Silvermoon\\Contracts\\Injection\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Timo Poppinga",
+                    "email": "timo@silvermoon.tech"
+                }
+            ],
+            "description": "Contracts of injection",
+            "homepage": "https://silvermoon.tech",
+            "keywords": [
+                "framework"
+            ]
+        },
+        {
             "name": "silvermoon/exception",
             "version": "dev-master",
             "dist": {
@@ -1554,12 +1586,12 @@
             "dist": {
                 "type": "path",
                 "url": "packages/component/injection",
-                "reference": "502aefb053ca6a31ee5260db2010ba6a3387d25a"
+                "reference": "33db87aba2bacc4c8496d7c44ac79afa48ee0e84"
             },
             "require": {
                 "php": "~7.4.2",
-                "silvermoon/exception": "*",
-                "silvermoon/injection-contracts": "*"
+                "silvermoon/contracts-injection": "*",
+                "silvermoon/exception": "*"
             },
             "type": "silvermoon-component",
             "autoload": {
@@ -1577,38 +1609,6 @@
                 }
             ],
             "description": "Injection",
-            "homepage": "https://silvermoon.tech",
-            "keywords": [
-                "framework"
-            ]
-        },
-        {
-            "name": "silvermoon/injection-contracts",
-            "version": "dev-master",
-            "dist": {
-                "type": "path",
-                "url": "packages/contracts/injection-contracts",
-                "reference": "11f88f306389674c5f3f5e09a51c6033eec50ae1"
-            },
-            "require": {
-                "php": "~7.4.2"
-            },
-            "type": "silvermoon-contracts",
-            "autoload": {
-                "psr-4": {
-                    "Silvermoon\\Contracts\\Injection\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Timo Poppinga",
-                    "email": "timo@silvermoon.tech"
-                }
-            ],
-            "description": "Contracts of injection",
             "homepage": "https://silvermoon.tech",
             "keywords": [
                 "framework"
@@ -1996,16 +1996,16 @@
         },
         {
             "name": "composer/xdebug-handler",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/xdebug-handler.git",
-                "reference": "cbe23383749496fe0f373345208b79568e4bc248"
+                "reference": "1ab9842d69e64fb3a01be6b656501032d1b78cb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/cbe23383749496fe0f373345208b79568e4bc248",
-                "reference": "cbe23383749496fe0f373345208b79568e4bc248",
+                "url": "https://api.github.com/repos/composer/xdebug-handler/zipball/1ab9842d69e64fb3a01be6b656501032d1b78cb7",
+                "reference": "1ab9842d69e64fb3a01be6b656501032d1b78cb7",
                 "shasum": ""
             },
             "require": {
@@ -2036,7 +2036,7 @@
                 "Xdebug",
                 "performance"
             ],
-            "time": "2019-11-06T16:40:04+00:00"
+            "time": "2020-03-01T12:26:26+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -3446,7 +3446,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "silvermoon/injection-contracts": 20,
+        "silvermoon/contracts-injection": 20,
         "silvermoon/injection": 20,
         "silvermoon/exception": 20,
         "silvermoon/testing-framework": 20,

@@ -19,7 +19,7 @@
   ],
   "require": {
     "php": "~7.4.2",
-    "silvermoon/injection-contracts": "@dev",
+    "silvermoon/contracts-injection": "@dev",
 
     "silvermoon/injection": "@dev",
 
