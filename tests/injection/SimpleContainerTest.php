@@ -34,9 +34,9 @@ class SimpleContainerTest extends BaseUnitTest
     }
 
     /**
-     * @param PlayGroundService $playGroundService
-     * @throws \Silvermoon\Injection\Exception\ClassDoesNotExistsException
+     * @throws ClassDoesNotExistsException
      * @throws \Silvermoon\Injection\Exception\ImplementationDoesNotExistsException
+     * @throws \Silvermoon\Injection\Exception\WrongTypeException
      */
     public function testGetSingletonNoInjection()
     {
@@ -50,9 +50,9 @@ class SimpleContainerTest extends BaseUnitTest
     }
 
     /**
-     * @param PlayGroundService $playGroundService
-     * @throws \Silvermoon\Injection\Exception\ClassDoesNotExistsException
+     * @throws ClassDoesNotExistsException
      * @throws \Silvermoon\Injection\Exception\ImplementationDoesNotExistsException
+     * @throws \Silvermoon\Injection\Exception\WrongTypeException
      */
     public function testGetNoSingletonNoInjection()
     {
@@ -84,6 +84,7 @@ class SimpleContainerTest extends BaseUnitTest
     /**
      * @throws ClassDoesNotExistsException
      * @throws \Silvermoon\Injection\Exception\ImplementationDoesNotExistsException
+     * @throws \Silvermoon\Injection\Exception\WrongTypeException
      */
     public function testGetInjectionNull()
     {
@@ -97,6 +98,7 @@ class SimpleContainerTest extends BaseUnitTest
     /**
      * @throws ClassDoesNotExistsException
      * @throws \Silvermoon\Injection\Exception\ImplementationDoesNotExistsException
+     * @throws \Silvermoon\Injection\Exception\WrongTypeException
      */
     public function testClassDoesNotExistsException()
     {

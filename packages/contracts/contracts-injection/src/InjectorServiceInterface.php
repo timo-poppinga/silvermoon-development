@@ -8,4 +8,8 @@ namespace Silvermoon\Contracts\Injection;
  */
 interface InjectorServiceInterface
 {
+    /**
+     * @return string
+     */
+    public function methodNameToInject(): string;
 }
