@@ -7,8 +7,8 @@ use Silvermoon\Injection\SimpleContainer;
 
 class SimpleContainerProxy extends SimpleContainer
 {
-    public function getDependencies(string $className, string $methodName = 'inject'): array
+    public function getInjectables(string $className, string $methodName = 'inject'): array
     {
-        return parent::getDependencies($className, $methodName);
+        return parent::getInjectables($className, $methodName);
     }
 }

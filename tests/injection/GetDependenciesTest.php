@@ -24,19 +24,19 @@ class GetDependenciesTest extends BaseUnitTest
 
     public function testInjectNothing()
     {
-        $out = $this->simpleContainer->getDependencies(MultiDependencies::class, 'injectNothing');
+        $out = $this->simpleContainer->getInjectables(MultiDependencies::class, 'injectNothing');
         $this->assertCount(0, $out);
     }
 
     public function testInjectNothingNoMethod()
     {
-        $out = $this->simpleContainer->getDependencies(MultiDependencies::class, 'injectNothingNoMethod');
+        $out = $this->simpleContainer->getInjectables(MultiDependencies::class, 'injectNothingNoMethod');
         $this->assertCount(0, $out);
     }
 
     public function testInjectNullableInterface()
     {
-        $out = $this->simpleContainer->getDependencies(MultiDependencies::class, 'injectNullableInterface');
+        $out = $this->simpleContainer->getInjectables(MultiDependencies::class, 'injectNullableInterface');
         $this->assertCount(1, $out);
 
         $first = $out[0];
@@ -49,7 +49,7 @@ class GetDependenciesTest extends BaseUnitTest
 
     public function testInjectMulti()
     {
-        $out = $this->simpleContainer->getDependencies(MultiDependencies::class, 'injectMulti');
+        $out = $this->simpleContainer->getInjectables(MultiDependencies::class, 'injectMulti');
         $this->assertCount(2, $out);
         $part01 = $out[0];
         $part02 = $out[1];
@@ -71,7 +71,7 @@ class GetDependenciesTest extends BaseUnitTest
 
     public function testInjectBaseType()
     {
-        $out = $this->simpleContainer->getDependencies(MultiDependencies::class, 'injectBaseType');
+        $out = $this->simpleContainer->getInjectables(MultiDependencies::class, 'injectBaseType');
         $this->assertCount(1, $out);
         $first = $out[0];
         $this->assertCount(3, $first);
@@ -83,7 +83,7 @@ class GetDependenciesTest extends BaseUnitTest
 
     public function testInjectMultiBaseType()
     {
-        $out = $this->simpleContainer->getDependencies(MultiDependencies::class, 'injectMultiBaseType');
+        $out = $this->simpleContainer->getInjectables(MultiDependencies::class, 'injectMultiBaseType');
         $this->assertCount(3, $out);
         $part01 = $out[0];
         $part02 = $out[1];

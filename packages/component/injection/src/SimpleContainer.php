@@ -69,11 +69,18 @@ class SimpleContainer implements ContainerInterface
         if (!\class_exists($className)) {
             throw new ClassDoesNotExistsException('The Class ' . $className . ' does not exists.');
         }
+        $newObject = new $className(...$constructorArguments);
         /** @var  InjectorServiceInterface $injectorService */
         foreach ($this->injectorServices as $injectorService) {
+            $injectables = $this->getInjectables($className, $injectorService->methodNameToInject());
+            if (\count($injectables) === 0) {
+                continue;
+            }
+            $injectorService->injector($this, $injectables, $newObject);
         }
 
-        return $this->_get($className, ...$constructorArguments);
+        $this->checkForSingletonInterface($className, $newObject);
+        return $newObject;
     }
 
     /**
@@ -99,57 +106,6 @@ class SimpleContainer implements ContainerInterface
 
     /**
      * @param string $className
-     * @param mixed ...$constructorArguments
-     * @return object
-     * @throws ClassDoesNotExistsException
-     * @throws ImplementationDoesNotExistsException
-     * @throws WrongTypeException
-     */
-    private function _get(string $className, ...$constructorArguments): object
-    {
-        $dependencies = $this->getDependencies($className);
-
-        if (count($dependencies) === 0) {
-            $newObject = new $className(...$constructorArguments);
-            $this->checkForSingletonInterface($className, $newObject);
-            return $newObject;
-        }
-
-        $dependObjects = [];
-        foreach ($dependencies as $dependency) {
-            $interfaceClassName = $dependency['dependency'];
-            $optional = $dependency['optional'];
-
-            if ($interfaceClassName === ContainerInterface::class) {
-                $dependObjects[] = $this;
-                continue;
-            }
-
-            if (\interface_exists($interfaceClassName)) {
-                $object = $this->getByInterface($interfaceClassName);
-                if ($object === null && $optional === false) {
-                    throw new ImplementationDoesNotExistsException('No Implementation for the interface ' . $interfaceClassName . ' dependency does not exists. Please register.');
-                }
-                $dependObjects[] = $object;
-                continue;
-            }
-
-            if (!\class_exists($interfaceClassName)) {
-                throw new ClassDoesNotExistsException('No class ' . $interfaceClassName . ' does not exists.');
-            }
-
-            $dependObjects[] = $this->get($interfaceClassName);
-        }
-
-        $newObject = new $className(...$constructorArguments);
-        $newObject->inject(...$dependObjects);
-        $this->checkForSingletonInterface($className, $newObject);
-        return $newObject;
-    }
-
-
-    /**
-     * @param string $className
      * @param object $newObject
      */
     private function checkForSingletonInterface(string $className, object $newObject): void
@@ -166,7 +122,7 @@ class SimpleContainer implements ContainerInterface
      * @return array
      * @throws WrongTypeException
      */
-    protected function getDependencies(string $className, string $methodName = 'inject'): array
+    protected function getInjectables(string $className, string $methodName = 'inject'): array
     {
         try {
             $reflectionClass = new \ReflectionClass($className);
