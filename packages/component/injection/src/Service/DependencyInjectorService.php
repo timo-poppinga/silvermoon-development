@@ -24,13 +24,13 @@ class DependencyInjectorService implements InjectorServiceInterface
 
     /**
      * @param ContainerInterface $container
-     * @param array $injectables
-     * @param object $object
+     * @param array[] $injectables
+     * @return mixed[]
      * @throws ClassDoesNotExistsException
      * @throws ImplementationDoesNotExistsException
      * @throws WrongTypeException
      */
-    public function injector(ContainerInterface $container, array $injectables, object &$object): void
+    public function injector(ContainerInterface $container, array $injectables): array
     {
         $injectableObjects = [];
         foreach ($injectables as $injectable) {
@@ -56,8 +56,9 @@ class DependencyInjectorService implements InjectorServiceInterface
                 throw new ClassDoesNotExistsException('No class ' . $interfaceClassName . ' does not exists.');
             }
 
-            $dependObjects[] = $container->get($interfaceClassName);
+            $injectableObjects[] = $container->get($interfaceClassName);
         }
-        $object->inject(...$injectableObjects);
+
+        return $injectableObjects;
     }
 }

@@ -72,11 +72,13 @@ class SimpleContainer implements ContainerInterface
         $newObject = new $className(...$constructorArguments);
         /** @var  InjectorServiceInterface $injectorService */
         foreach ($this->injectorServices as $injectorService) {
-            $injectables = $this->getInjectables($className, $injectorService->methodNameToInject());
+            $methodNameToInject = $injectorService->methodNameToInject();
+            $injectables = $this->getInjectables($className, $methodNameToInject);
             if (\count($injectables) === 0) {
                 continue;
             }
-            $injectorService->injector($this, $injectables, $newObject);
+            $injectableObjects = $injectorService->injector($this, $injectables);
+            $newObject->$methodNameToInject(...$injectableObjects);
         }
 
         $this->checkForSingletonInterface($className, $newObject);
@@ -117,10 +119,9 @@ class SimpleContainer implements ContainerInterface
 
 
     /**
-     * @param string $className
+     * @param class-string $className
      * @param string $methodName
-     * @return array
-     * @throws WrongTypeException
+     * @return array[]
      */
     protected function getInjectables(string $className, string $methodName = 'inject'): array
     {
@@ -153,7 +154,7 @@ class SimpleContainer implements ContainerInterface
                 $info['dependency'] = $interfaceClass->getName();
             }
             if ($type !== null) {
-                $info['optional'] = $reflectionParameter->getType()->allowsNull();
+                $info['optional'] = $type->allowsNull();
             }
             $out[] = $info;
         }

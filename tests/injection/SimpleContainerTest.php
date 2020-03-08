@@ -7,6 +7,7 @@ use Silvermoon\Injection\Exception\ClassDoesNotExistsException;
 use Silvermoon\Injection\SimpleContainer;
 use Silvermoon\TestingFramework\BaseUnitTest;
 use SilvermoonTests\Injection\Fixtures\Display;
+use SilvermoonTests\Injection\Fixtures\GreenDisplay;
 use SilvermoonTests\Injection\Fixtures\Monitor;
 use SilvermoonTests\Injection\Fixtures\Service\PlayGroundService;
 use SilvermoonTests\Injection\Fixtures\Service\ScoreService;
@@ -106,5 +107,19 @@ class SimpleContainerTest extends BaseUnitTest
 
         /** @var Display $display */
         $this->simpleContainer->get(Display::class . 'No');
+    }
+
+    /**
+     * @throws ClassDoesNotExistsException
+     * @throws \Silvermoon\Injection\Exception\ImplementationDoesNotExistsException
+     * @throws \Silvermoon\Injection\Exception\InterfaceDoesNotExistsException
+     * @throws \Silvermoon\Injection\Exception\WrongTypeException
+     */
+    public function testInjectionClass()
+    {
+        $this->simpleContainer->register(ScoreServiceInterface::class, ScoreService::class);
+        /** @var GreenDisplay $greenDisplay */
+        $greenDisplay = $this->simpleContainer->get(GreenDisplay::class);
+        $this->assertInstanceOf(Display::class, $greenDisplay->display);
     }
 }
