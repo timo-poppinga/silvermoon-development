@@ -1,0 +1,22 @@
+{
+  "name": "silvermoon/contracts-configuration",
+  "type": "silvermoon-contracts",
+  "description": "Contracts of configuration",
+  "keywords": ["framework"],
+  "homepage": "https://silvermoon.tech",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Timo Poppinga",
+      "email": "timo@silvermoon.tech"
+    }
+  ],
+  "require": {
+    "php": "~7.4.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "Silvermoon\\Contracts\\Configuration\\": "src/"
+    }
+  }
+}

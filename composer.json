@@ -20,8 +20,10 @@
   "require": {
     "php": "~7.4.2",
     "silvermoon/contracts-injection": "@dev",
+    "silvermoon/contracts-configuration": "@dev",
 
     "silvermoon/injection": "@dev",
+    "silvermoon/configuration": "@dev",
 
     "silvermoon/exception": "@dev",
 
@@ -39,7 +41,8 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "SilvermoonTests\\Injection\\": "tests/injection"
+      "SilvermoonTests\\Injection\\": "tests/injection",
+      "SilvermoonTests\\Configuration\\": "tests/configuration"
     }
   }
 }

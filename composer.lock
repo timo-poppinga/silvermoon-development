@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dc98924da5c40a14bfbdd252a59f5d2a",
+    "content-hash": "9354c6d96b334a239597debf14b01f97",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -365,16 +365,16 @@
         },
         {
             "name": "phpspec/prophecy",
-            "version": "v1.10.2",
+            "version": "v1.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/prophecy.git",
-                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9"
+                "reference": "451c3cd1418cf640de218914901e51b064abb093"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
-                "reference": "b4400efc9d206e83138e2bb97ed7f5b14b831cd9",
+                "url": "https://api.github.com/repos/phpspec/prophecy/zipball/451c3cd1418cf640de218914901e51b064abb093",
+                "reference": "451c3cd1418cf640de218914901e51b064abb093",
                 "shasum": ""
             },
             "require": {
@@ -424,20 +424,20 @@
                 "spy",
                 "stub"
             ],
-            "time": "2020-01-20T15:57:02+00:00"
+            "time": "2020-03-05T15:02:03+00:00"
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.11",
+            "version": "0.12.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "ca5f2b7cf81c6d8fba74f9576970399c5817e03b"
+                "reference": "37bdd26a80235d0f9045b49f4151102b7831cbe2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/ca5f2b7cf81c6d8fba74f9576970399c5817e03b",
-                "reference": "ca5f2b7cf81c6d8fba74f9576970399c5817e03b",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/37bdd26a80235d0f9045b49f4151102b7831cbe2",
+                "reference": "37bdd26a80235d0f9045b49f4151102b7831cbe2",
                 "shasum": ""
             },
             "require": {
@@ -463,7 +463,7 @@
                 "MIT"
             ],
             "description": "PHPStan - PHP Static Analysis Tool",
-            "time": "2020-02-16T14:00:29+00:00"
+            "time": "2020-03-02T22:29:43+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1517,6 +1517,72 @@
             ]
         },
         {
+            "name": "silvermoon/configuration",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "packages/component/configuration",
+                "reference": "212f150ee32fed991f886719965c1767ff4e418a"
+            },
+            "require": {
+                "php": "~7.4.2",
+                "silvermoon/contracts-configuration": "*",
+                "silvermoon/exception": "*"
+            },
+            "type": "silvermoon-component",
+            "autoload": {
+                "psr-4": {
+                    "Silvermoon\\Configuration\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Timo Poppinga",
+                    "email": "timo@silvermoon.tech"
+                }
+            ],
+            "description": "Configuration",
+            "homepage": "https://silvermoon.tech",
+            "keywords": [
+                "framework"
+            ]
+        },
+        {
+            "name": "silvermoon/contracts-configuration",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "packages/contracts/contracts-configuration",
+                "reference": "f552d7b3255b996a160c5ba753dad8e25e76b5fa"
+            },
+            "require": {
+                "php": "~7.4.2"
+            },
+            "type": "silvermoon-contracts",
+            "autoload": {
+                "psr-4": {
+                    "Silvermoon\\Contracts\\Configuration\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Timo Poppinga",
+                    "email": "timo@silvermoon.tech"
+                }
+            ],
+            "description": "Contracts of configuration",
+            "homepage": "https://silvermoon.tech",
+            "keywords": [
+                "framework"
+            ]
+        },
+        {
             "name": "silvermoon/contracts-injection",
             "version": "dev-master",
             "dist": {
@@ -2174,12 +2240,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "b98ffa996d84014a9662855ee73a984c7d4fadff"
+                "reference": "e7aa07b8c24fbcedbf009da8e21d9767369ad8cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/b98ffa996d84014a9662855ee73a984c7d4fadff",
-                "reference": "b98ffa996d84014a9662855ee73a984c7d4fadff",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/e7aa07b8c24fbcedbf009da8e21d9767369ad8cc",
+                "reference": "e7aa07b8c24fbcedbf009da8e21d9767369ad8cc",
                 "shasum": ""
             },
             "require": {
@@ -2257,7 +2323,7 @@
                 }
             ],
             "description": "A tool to automatically fix PHP code style",
-            "time": "2020-02-28T09:02:05+00:00"
+            "time": "2020-03-02T21:49:01+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -3447,7 +3513,9 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "silvermoon/contracts-injection": 20,
+        "silvermoon/contracts-configuration": 20,
         "silvermoon/injection": 20,
+        "silvermoon/configuration": 20,
         "silvermoon/exception": 20,
         "silvermoon/testing-framework": 20,
         "silvermoon/code-quality-framework": 20,
