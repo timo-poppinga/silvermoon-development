@@ -143,21 +143,18 @@ class SimpleContainer implements ContainerInterface
         /** @var \ReflectionParameter $reflectionParameter */
         foreach ($reflectionParameters as $reflectionParameter) {
             $info = [];
-            $info['name'] = $reflectionParameter->getName();
             $interfaceClass = $reflectionParameter->getClass();
             $type = $reflectionParameter->getType();
+            $info['name'] = $reflectionParameter->getName();
+            $info['type'] =  (string) $type;
+            $info['optional'] = false;
             if ($interfaceClass !== null) {
                 $info['type'] =  'class';
                 $info['dependency'] = $interfaceClass->getName();
-            } else {
-                $info['type'] =  (string) $type;
             }
             if ($type !== null) {
                 $info['optional'] = $reflectionParameter->getType()->allowsNull();
-            } else {
-                $info['optional'] = false;
             }
-
             $out[] = $info;
         }
         return $out;
