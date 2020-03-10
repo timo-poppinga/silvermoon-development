@@ -19,7 +19,7 @@ class MultiDependencies
     {
     }
 
-    public function injectBaseType(string $info)
+    public function injectBaseType(string $info, string $info02 = 'hello')
     {
     }
 
