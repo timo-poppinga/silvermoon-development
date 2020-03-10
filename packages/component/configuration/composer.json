@@ -14,7 +14,8 @@
   "require": {
     "php": "~7.4.2",
     "silvermoon/contracts-configuration": "*",
-    "silvermoon/exception": "*"
+    "silvermoon/exception": "*",
+    "symfony/yaml": "^v5.0.5"
   },
   "autoload": {
     "psr-4": {

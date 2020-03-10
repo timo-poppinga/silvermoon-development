@@ -5,7 +5,7 @@ namespace Silvermoon\Injection\Service;
 
 use Silvermoon\Contracts\Injection\ContainerInterface;
 use Silvermoon\Contracts\Injection\InjectorServiceInterface;
-use Silvermoon\Injection\Exception\ClassDoesNotExistsException;
+use Silvermoon\Injection\Exception\ConfigurationException;
 use Silvermoon\Injection\Exception\ImplementationDoesNotExistsException;
 use Silvermoon\Injection\Exception\WrongTypeException;
 
@@ -26,7 +26,7 @@ class DependencyInjectorService implements InjectorServiceInterface
      * @param ContainerInterface $container
      * @param array[] $injectables
      * @return mixed[]
-     * @throws ClassDoesNotExistsException
+     * @throws ConfigurationException
      * @throws ImplementationDoesNotExistsException
      * @throws WrongTypeException
      */
@@ -53,7 +53,7 @@ class DependencyInjectorService implements InjectorServiceInterface
             }
 
             if (!\class_exists($interfaceClassName)) {
-                throw new ClassDoesNotExistsException('No class ' . $interfaceClassName . ' does not exists.');
+                throw new ConfigurationException('No class ' . $interfaceClassName . ' does not exists.');
             }
 
             $injectableObjects[] = $container->get($interfaceClassName);

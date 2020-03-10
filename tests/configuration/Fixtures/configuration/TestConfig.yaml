@@ -1,0 +1,25 @@
+database:
+  host: 'localhost'
+  port: '88888'
+
+users:
+  - Max
+  - Lucas
+  - Malte
+
+addresses[/Silvermoon/Test/Model/Adress]:
+  -
+    street: 'Tree Street'
+    houseNumber: '12'
+  -
+    street: 'Sunny Street'
+    houseNumber: '18'
+
+items[string]:
+  - Tree
+  - Car
+
+items[+]:
+  - Table
+
+

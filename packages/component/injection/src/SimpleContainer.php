@@ -6,7 +6,7 @@ namespace Silvermoon\Injection;
 use Silvermoon\Contracts\Injection\ContainerInterface;
 use Silvermoon\Contracts\Injection\InjectorServiceInterface;
 use Silvermoon\Contracts\Injection\SingletonInterface;
-use Silvermoon\Injection\Exception\ClassDoesNotExistsException;
+use Silvermoon\Injection\Exception\ConfigurationException;
 use Silvermoon\Injection\Exception\ImplementationDoesNotExistsException;
 use Silvermoon\Injection\Exception\InterfaceDoesNotExistsException;
 use Silvermoon\Injection\Exception\WrongTypeException;
@@ -40,7 +40,7 @@ class SimpleContainer implements ContainerInterface
     /**
      * @param string $interfaceName
      * @return object|null
-     * @throws ClassDoesNotExistsException
+     * @throws ConfigurationException
      * @throws ImplementationDoesNotExistsException
      * @throws WrongTypeException
      */
@@ -57,7 +57,7 @@ class SimpleContainer implements ContainerInterface
      * @param string $className
      * @param mixed ...$constructorArguments
      * @return object
-     * @throws ClassDoesNotExistsException
+     * @throws ConfigurationException
      * @throws ImplementationDoesNotExistsException
      * @throws WrongTypeException
      */
@@ -67,7 +67,7 @@ class SimpleContainer implements ContainerInterface
             return $this->singletonArray[$className];
         }
         if (!\class_exists($className)) {
-            throw new ClassDoesNotExistsException('The Class ' . $className . ' does not exists.');
+            throw new ConfigurationException('The Class ' . $className . ' does not exists.');
         }
         $newObject = new $className(...$constructorArguments);
         /** @var  InjectorServiceInterface $injectorService */
@@ -88,7 +88,7 @@ class SimpleContainer implements ContainerInterface
     /**
      * @param string $interfaceName
      * @param string $className
-     * @throws ClassDoesNotExistsException
+     * @throws ConfigurationException
      * @throws InterfaceDoesNotExistsException
      * @throws WrongTypeException
      */
@@ -98,7 +98,7 @@ class SimpleContainer implements ContainerInterface
             throw new InterfaceDoesNotExistsException('Given interface <' . $interfaceName . '> not found or is not an interface');
         }
         if (!\class_exists($className)) {
-            throw new ClassDoesNotExistsException('Given class <' . $className . '> not found');
+            throw new ConfigurationException('Given class <' . $className . '> not found');
         }
         if ($this->implementsInterface($interfaceName, $className) === false) {
             throw new WrongTypeException('Given class <' . $className . '> must implement the interface <' . $interfaceName . '>');
