@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace SilvermoonTests\Injection;
 
 use Silvermoon\Injection\Exception\ConfigurationException;
+use Silvermoon\Injection\Exception\ImplementationDoesNotExistsException;
 use Silvermoon\Injection\SimpleContainer;
 use Silvermoon\TestingFramework\BaseUnitTest;
 use SilvermoonTests\Injection\Fixtures\Display;
@@ -51,7 +52,6 @@ class SimpleContainerTest extends BaseUnitTest
     }
 
     /**
-     * @throws ConfigurationException
      * @throws \Silvermoon\Injection\Exception\ImplementationDoesNotExistsException
      * @throws \Silvermoon\Injection\Exception\WrongTypeException
      */
@@ -67,7 +67,6 @@ class SimpleContainerTest extends BaseUnitTest
     }
 
     /**
-     * @throws \Silvermoon\Injection\Exception\ConfigurationException
      * @throws \Silvermoon\Injection\Exception\ImplementationDoesNotExistsException
      * @throws \Silvermoon\Injection\Exception\InterfaceDoesNotExistsException
      * @throws \Silvermoon\Injection\Exception\WrongTypeException
@@ -83,7 +82,6 @@ class SimpleContainerTest extends BaseUnitTest
     }
 
     /**
-     * @throws ConfigurationException
      * @throws \Silvermoon\Injection\Exception\ImplementationDoesNotExistsException
      * @throws \Silvermoon\Injection\Exception\WrongTypeException
      */
@@ -97,21 +95,19 @@ class SimpleContainerTest extends BaseUnitTest
     }
 
     /**
-     * @throws ConfigurationException
-     * @throws \Silvermoon\Injection\Exception\ImplementationDoesNotExistsException
+     * @throws ImplementationDoesNotExistsException
      * @throws \Silvermoon\Injection\Exception\WrongTypeException
      */
     public function testClassDoesNotExistsException()
     {
-        $this->expectException(ConfigurationException::class);
+        $this->expectException(ImplementationDoesNotExistsException::class);
 
         /** @var Display $display */
         $this->simpleContainer->get(Display::class . 'No');
     }
 
     /**
-     * @throws ConfigurationException
-     * @throws \Silvermoon\Injection\Exception\ImplementationDoesNotExistsException
+     * @throws ImplementationDoesNotExistsException
      * @throws \Silvermoon\Injection\Exception\InterfaceDoesNotExistsException
      * @throws \Silvermoon\Injection\Exception\WrongTypeException
      */

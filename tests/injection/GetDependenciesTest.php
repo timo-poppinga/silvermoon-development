@@ -72,13 +72,20 @@ class GetDependenciesTest extends BaseUnitTest
     public function testInjectBaseType()
     {
         $out = $this->simpleContainer->getInjectables(MultiDependencies::class, 'injectBaseType');
-        $this->assertCount(1, $out);
-        $first = $out[0];
-        $this->assertCount(3, $first);
+        $this->assertCount(2, $out);
+        $part01 = $out[0];
+        $part02 = $out[1];
+        $this->assertCount(3, $part01);
+        $this->assertCount(4, $part02);
 
-        $this->assertSame('info', $first['name']);
-        $this->assertSame('string', $first['type']);
-        $this->assertSame(false, $first['optional']);
+        $this->assertSame('info01', $part01['name']);
+        $this->assertSame('string', $part01['type']);
+        $this->assertSame(false, $part01['optional']);
+
+        $this->assertSame('info02', $part02['name']);
+        $this->assertSame('string', $part02['type']);
+        $this->assertSame(true, $part02['optional']);
+        $this->assertSame('hello', $part02['defaultValue']);
     }
 
     public function testInjectMultiBaseType()
