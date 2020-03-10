@@ -3,9 +3,7 @@ declare(strict_types=1);
 
 namespace SilvermoonTests\Configuration\Helpers;
 
-use _HumbugBoxa35debbd0202\OndraM\CiDetector\CiDetector;
 use Silvermoon\Configuration\Exception\InvalidNameException;
-use Silvermoon\Configuration\Helpers\DirectoryHelper;
 use Silvermoon\TestingFramework\BaseUnitTest;
 use SilvermoonTests\Configuration\Proxies\Helper\ConfigMergeHelperProxy;
 

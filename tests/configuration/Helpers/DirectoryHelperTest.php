@@ -5,13 +5,9 @@ namespace SilvermoonTests\Configuration\Helpers;
 
 use Silvermoon\Configuration\Helpers\DirectoryHelper;
 use Silvermoon\TestingFramework\BaseUnitTest;
-use SilvermoonTests\Injection\Fixtures\Display;
-use SilvermoonTests\Injection\Fixtures\MultiDependencies;
-use SilvermoonTests\Injection\Proxies\SimpleContainerProxy;
 
 class DirectoryHelperTest extends BaseUnitTest
 {
-
     protected string $examplePath;
 
     protected function setUp(): void
@@ -48,6 +44,4 @@ class DirectoryHelperTest extends BaseUnitTest
             $this->examplePath . '/Services/Nice'
         ], $directories);
     }
-
-
 }

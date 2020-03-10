@@ -8,5 +8,4 @@ namespace Silvermoon\Configuration\Helper;
  */
 class FileHelper
 {
-
 }

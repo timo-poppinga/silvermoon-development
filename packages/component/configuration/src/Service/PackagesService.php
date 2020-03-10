@@ -24,11 +24,11 @@ class PackagesService
         $packages = [];
         foreach ($directories as $directory) {
             $composerFilePath = $directory . '/composer.json';
-            if(\file_exists($composerFilePath) === false) {
+            if (\file_exists($composerFilePath) === false) {
                 continue;
             }
             $composerData = \json_decode(\file_get_contents($composerFilePath), true);
-            if($composerData === null) {
+            if ($composerData === null) {
                 continue;
             }
             $package = new Package();

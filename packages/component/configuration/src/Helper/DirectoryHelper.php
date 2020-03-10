@@ -19,7 +19,7 @@ class DirectoryHelper
     {
         $realpathPath = \realpath($path);
         $directories = self::_directoriesInPath($realpathPath, $depth, $startAtDepth);
-        if($absolutePath === true) {
+        if ($absolutePath === true) {
             return $directories;
         }
         $relativeDirectories = [];
@@ -56,5 +56,4 @@ class DirectoryHelper
         }
         return $directories;
     }
-
 }

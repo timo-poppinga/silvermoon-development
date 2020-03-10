@@ -8,7 +8,6 @@ namespace Silvermoon\Configuration;
  */
 class Configuration
 {
-
     protected array $currentConfig = [];
 
     /**
@@ -19,7 +18,7 @@ class Configuration
     public function readConfigurationAsString(string $path, ?string $default = null): ?string
     {
         $configuration = $this->readConfiguration($path);
-        if(\is_string($configuration) === true) {
+        if (\is_string($configuration) === true) {
             return $configuration;
         }
         return $default;
@@ -63,5 +62,4 @@ class Configuration
             $currentConfigPosition[$pathSegment] = $value;
         }
     }
-
 }

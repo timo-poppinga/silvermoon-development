@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace Silvermoon\Configuration\Service;
 
 use Silvermoon\Configuration\Helpers\DirectoryHelper;
-use Silvermoon\Configuration\Model\Package;
 use Symfony\Component\Yaml\Yaml;
 
 /**
@@ -17,14 +16,14 @@ class ConfigurationLoader
         $realRootPath = \realpath($rootPath);
         $configuration = $this->loadYamlFileAndMergeWitchConfiguration([], $rootPath . '/.config.yaml');
         $packagePath = 'vendor';
-        if(\array_key_exists('packagePath', $configuration)) {
+        if (\array_key_exists('packagePath', $configuration)) {
             $packagePath = $configuration['packagePath'];
         }
         $realPackagePath = \realpath($realRootPath . '/' . $packagePath);
-        $pathToPackages = DirectoryHelper::directoriesInPath($realPackagePath, 1 , 1, true);
+        $pathToPackages = DirectoryHelper::directoriesInPath($realPackagePath, 1, 1, true);
         foreach ($pathToPackages as $pathToPackage) {
             $pathToConfiguration = $pathToPackage . '/configuration';
-            if(\is_dir($pathToConfiguration) === false) {
+            if (\is_dir($pathToConfiguration) === false) {
                 continue;
             }
         }
@@ -37,7 +36,7 @@ class ConfigurationLoader
      */
     public function loadYamlFileAndMergeWitchConfiguration(array $configuration, $pathToYamlFile): array
     {
-        if(\is_file($pathToYamlFile)) {
+        if (\is_file($pathToYamlFile)) {
             return $configuration;
         }
         $newConfiguration = Yaml::parse(\file_get_contents($pathToYamlFile));

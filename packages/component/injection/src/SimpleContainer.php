@@ -155,10 +155,11 @@ class SimpleContainer implements ContainerInterface
             if ($type !== null) {
                 $info['optional'] = $type->allowsNull();
             }
-            if($reflectionParameter->isDefaultValueAvailable()) {
+            if ($reflectionParameter->isDefaultValueAvailable()) {
                 try {
                     $info['defaultValue'] = $reflectionParameter->getDefaultValue();
-                } catch (\ReflectionException $e) {}
+                } catch (\ReflectionException $e) {
+                }
             }
             $out[] = $info;
         }
