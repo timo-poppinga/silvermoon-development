@@ -21,6 +21,12 @@ class ConfigMergeHelperTest extends BaseUnitTest
         ConfigMergeHelperProxy::parseKey('_-HelloWorld');
     }
 
+    public function testParseKeyInvalidDataType()
+    {
+        $this->expectException(InvalidNameException::class);
+        ConfigMergeHelperProxy::parseKey('test<<<hallo>');
+    }
+
     public function testParseKeyNoError()
     {
         $result = ConfigMergeHelperProxy::parseKey('_1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
@@ -30,7 +36,21 @@ class ConfigMergeHelperTest extends BaseUnitTest
     public function testParseKeyArrayType()
     {
         $result = ConfigMergeHelperProxy::parseKey('items[string]');
-        $t = ConfigMergeHelperProxy::class;
         $this->assertIsArray($result);
+    }
+
+    public function testParseDataType()
+    {
+        $result = ConfigMergeHelperProxy::parseKey('items[Test\NewTool\Nice]');
+        $this->assertIsArray($result);
+        $this->assertSame('Test\NewTool\Nice', $result['dataType']);
+    }
+
+    public function testParseDataTypeArrayAdd()
+    {
+        $result = ConfigMergeHelperProxy::parseKey('items[+]');
+        $this->assertIsArray($result);
+        $this->assertSame('arrayAdd', $result['type']);
+        $this->assertSame('+', $result['dataType']);
     }
 }
