@@ -20,9 +20,10 @@ interface InjectorServiceInterface
      */
 
     /**
+     * @param string $className
+     * @param array $injectables
      * @param ContainerInterface $container
-     * @param array[] $injectables
      * @return mixed[]
      */
-    public function injector(ContainerInterface $container, array $injectables): array;
+    public function injector(string $className, array $injectables, ContainerInterface $container): array;
 }

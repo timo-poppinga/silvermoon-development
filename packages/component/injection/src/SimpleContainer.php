@@ -77,7 +77,7 @@ class SimpleContainer implements ContainerInterface
             if (\count($injectables) === 0) {
                 continue;
             }
-            $injectableObjects = $injectorService->injector($this, $injectables);
+            $injectableObjects = $injectorService->injector($className, $injectables, $this);
             $newObject->$methodNameToInject(...$injectableObjects);
         }
 

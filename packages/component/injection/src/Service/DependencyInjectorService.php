@@ -23,14 +23,15 @@ class DependencyInjectorService implements InjectorServiceInterface
     }
 
     /**
+     * @param string $className
+     * @param array $injectables
      * @param ContainerInterface $container
-     * @param array[] $injectables
      * @return mixed[]
      * @throws ConfigurationException
      * @throws ImplementationDoesNotExistsException
      * @throws WrongTypeException
      */
-    public function injector(ContainerInterface $container, array $injectables): array
+    public function injector(string $className, array $injectables, ContainerInterface $container): array
     {
         $injectableObjects = [];
         foreach ($injectables as $injectable) {
