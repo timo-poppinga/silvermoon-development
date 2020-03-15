@@ -26,7 +26,7 @@ class Configuration
 
     /**
      * @param string $path
-     * @return bool|mixed
+     * @return mixed
      */
     private function readConfiguration(string $path)
     {

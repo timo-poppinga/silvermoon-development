@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace Silvermoon\Configuration\Helper;
 
 /**
- * Class DirectoryHelper
+ * Class _DirectoryHelper
  */
-class DirectoryHelper
+class _DirectoryHelper
 {
     /**
      * @param string $path
