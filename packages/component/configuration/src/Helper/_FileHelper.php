@@ -17,7 +17,7 @@ class _FileHelper
     public static function filesInPath(string $path, ?string $fileExtensionFilter = null, bool $absolutePath = false): array
     {
         $realpathPath = \realpath($path);
-        if($realpathPath === false) {
+        if ($realpathPath === false) {
             return [];
         }
         if (\is_dir($realpathPath) === false) {
@@ -26,17 +26,17 @@ class _FileHelper
         $directoryItems = \scandir($realpathPath);
         $files = [];
         foreach ($directoryItems as $directoryItem) {
-            if(\is_file($path . '/' . $directoryItem) === false) {
-               continue;
+            if (\is_file($path . '/' . $directoryItem) === false) {
+                continue;
             }
-            if($fileExtensionFilter) {
+            if ($fileExtensionFilter) {
                 $parts = \explode('.', $directoryItem);
-                if(count($parts) !== 2 || $parts[1] !== $fileExtensionFilter) {
+                if (count($parts) !== 2 || $parts[1] !== $fileExtensionFilter) {
                     continue;
                 }
             }
 
-            if($absolutePath) {
+            if ($absolutePath) {
                 $files[] = $path . '/' . $directoryItem;
                 continue;
             }

@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace SilvermoonTests\Configuration\Helpers;
 
-use Silvermoon\Configuration\Helpers\DirectoryHelper;
+use Silvermoon\Configuration\Helper\_DirectoryHelper;
 use Silvermoon\TestingFramework\BaseUnitTest;
 
-class DirectoryHelperTest extends BaseUnitTest
+class _DirectoryHelperTest extends BaseUnitTest
 {
     protected string $examplePath;
 
@@ -19,28 +19,29 @@ class DirectoryHelperTest extends BaseUnitTest
 
     public function testLoadDirectories()
     {
-        $directories = DirectoryHelper::directoriesInPath($this->examplePath);
+        $directories = _DirectoryHelper::directoriesInPath($this->examplePath);
         $this->assertSame(['Helpers', 'Services'], $directories);
     }
 
     public function testLoadDirectoriesInDepthTow()
     {
-        $directories = DirectoryHelper::directoriesInPath($this->examplePath, 1);
-        $this->assertSame(['Helpers', 'Services', 'Services/Nice'], $directories);
+        $directories = _DirectoryHelper::directoriesInPath($this->examplePath, 1);
+        $this->assertSame(['Helpers', 'Services', 'Services/MuchNicer', 'Services/Nice'], $directories);
     }
 
     public function testLoadDirectoriesInDepthTowStartAtTow()
     {
-        $directories = DirectoryHelper::directoriesInPath($this->examplePath, 1, 1);
-        $this->assertSame(['Services/Nice'], $directories);
+        $directories = _DirectoryHelper::directoriesInPath($this->examplePath, 1, 1);
+        $this->assertSame(['Services/MuchNicer', 'Services/Nice'], $directories);
     }
 
     public function testLoadDirectoriesInDepthTowFull()
     {
-        $directories = DirectoryHelper::directoriesInPath($this->examplePath, 1, 0, true);
+        $directories = _DirectoryHelper::directoriesInPath($this->examplePath, 1, 0, true);
         $this->assertSame([
             $this->examplePath . '/Helpers',
             $this->examplePath . '/Services',
+            $this->examplePath . '/Services/MuchNicer',
             $this->examplePath . '/Services/Nice'
         ], $directories);
     }
