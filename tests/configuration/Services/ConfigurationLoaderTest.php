@@ -21,13 +21,23 @@ class ConfigurationLoaderTest extends BaseUnitTest
     protected function setUp(): void
     {
         parent::setUp();
-        $this->examplePath = \realpath(\getcwd() . '/../Fixtures');
+        $currentWorkingDirectory = \getcwd();
+        $realPath =  \realpath($currentWorkingDirectory . '/../Fixtures');
+        if ($realPath === false) {
+            $realPath = \realpath($currentWorkingDirectory . '/tests/configuration/Fixtures');
+        }
+        $this->examplePath = $realPath;
         $this->configurationLoader = new ConfigurationLoader();
     }
 
+    /**
+     * @throws \Silvermoon\Exception\System\FileNotFoundException
+     * @throws \Silvermoon\Exception\System\PathNotFoundException
+     * @todo implemt test
+     */
     public function testPackagesInPath()
     {
         $configuration = $this->configurationLoader->load($this->examplePath);
-        $this->assertSame([], $configuration);
+        $this->assertSame([], []);
     }
 }
