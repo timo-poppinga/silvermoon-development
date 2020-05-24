@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Silvermoon\Injection\Service;
 
+use Psr\Container\ContainerInterface as PsrContainerInterface;
 use Silvermoon\Contracts\Injection\ContainerInterface;
 use Silvermoon\Contracts\Injection\InjectorServiceInterface;
 use Silvermoon\Exception\ConfigurationException;

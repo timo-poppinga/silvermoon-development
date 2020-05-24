@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace SilvermoonTests\Injection;
 
-use Silvermoon\Injection\Exception\ConfigurationException;
 use Silvermoon\Injection\Exception\ImplementationDoesNotExistsException;
 use Silvermoon\Injection\Exception\InterfaceDoesNotExistsException;
 use Silvermoon\Injection\Exception\WrongTypeException;

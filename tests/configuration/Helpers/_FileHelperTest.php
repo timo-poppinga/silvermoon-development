@@ -15,7 +15,7 @@ class _FileHelperTest extends BaseUnitTest
         parent::setUp();
         $currentWorkingDirectory = \getcwd();
         $realPath = \realpath($currentWorkingDirectory . '/../Fixtures/vendor');
-        if($realPath === false) {
+        if ($realPath === false) {
             $realPath = \realpath($currentWorkingDirectory . '/tests/configuration/Fixtures/vendor');
         }
         $this->examplePath = $realPath;

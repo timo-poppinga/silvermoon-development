@@ -15,7 +15,7 @@ class _DirectoryHelperTest extends BaseUnitTest
         parent::setUp();
         $currentWorkingDirectory = \getcwd();
         $realPath = \realpath($currentWorkingDirectory . '/../Fixtures/FilesAndDirectoriesExample');
-        if($realPath === false) {
+        if ($realPath === false) {
             $realPath = \realpath($currentWorkingDirectory . '/tests/configuration/Fixtures/FilesAndDirectoriesExample');
         }
         $this->examplePath = $realPath;
