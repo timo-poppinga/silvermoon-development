@@ -11,4 +11,4 @@ script:
   - bin/php-style
   - bin/php-md
   - bin/php-stan
-  - bin/php-unit
+  - bin/php-test
