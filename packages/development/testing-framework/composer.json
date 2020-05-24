@@ -21,6 +21,6 @@
     }
   },
   "bin": [
-    "binary/sm-php-unit"
+    "binary/php-test"
   ]
 }
