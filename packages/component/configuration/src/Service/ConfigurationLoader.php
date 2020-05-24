@@ -12,6 +12,7 @@ use Symfony\Component\Yaml\Yaml;
 
 /**
  * Class PackagesService
+ * @SuppressWarnings(PHPMD)
  */
 class ConfigurationLoader
 {

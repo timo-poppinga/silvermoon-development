@@ -5,6 +5,7 @@ namespace Silvermoon\Configuration\Helper;
 
 use Silvermoon\Configuration\StructModel\_Package;
 use Silvermoon\Exception\System\FileNotFoundException;
+use Silvermoon\Exception\System\PathNotFoundException;
 
 /**
  * Class _PackagesHelper
@@ -15,6 +16,8 @@ class _PackageHelper
      * @param string $pathToVendor
      * @return _Package[]
      * @throws FileNotFoundException
+     * @throws PathNotFoundException
+     * @SuppressWarnings(PHPMD)
      */
     public static function packagesInPath(string $pathToVendor): array
     {
