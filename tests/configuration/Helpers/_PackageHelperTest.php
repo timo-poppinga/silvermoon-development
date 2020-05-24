@@ -13,7 +13,12 @@ class _PackageHelperTest extends BaseUnitTest
     protected function setUp(): void
     {
         parent::setUp();
-        $this->examplePath = \realpath(\getcwd() . '/../Fixtures/vendor');
+        $currentWorkingDirectory = \getcwd();
+        $realPath = \realpath($currentWorkingDirectory . '/../Fixtures/vendor');
+        if($realPath === false) {
+            $realPath = \realpath($currentWorkingDirectory . '/tests/configuration/Fixtures/vendor');
+        }
+        $this->examplePath = $realPath;
     }
 
     public function testPackagesInPath()

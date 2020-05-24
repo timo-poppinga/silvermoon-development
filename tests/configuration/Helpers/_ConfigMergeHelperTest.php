@@ -54,7 +54,11 @@ class _ConfigMergeHelperTest extends BaseUnitTest
         $this->assertSame('+', $result['dataType']);
     }
 
-    public function testMergeConfigRecursive()
+    /**
+     * @throws InvalidNameException
+     * @todo test needs to be done
+     */
+    public function toDoTestMergeConfigRecursive()
     {
         $configuration = [
             'config' => [

@@ -13,7 +13,12 @@ class _DirectoryHelperTest extends BaseUnitTest
     protected function setUp(): void
     {
         parent::setUp();
-        $this->examplePath = \realpath(\getcwd() . '/../Fixtures/FilesAndDirectoriesExample');
+        $currentWorkingDirectory = \getcwd();
+        $realPath = \realpath($currentWorkingDirectory . '/../Fixtures/FilesAndDirectoriesExample');
+        if($realPath === false) {
+            $realPath = \realpath($currentWorkingDirectory . '/tests/configuration/Fixtures/FilesAndDirectoriesExample');
+        }
+        $this->examplePath = $realPath;
     }
 
 
