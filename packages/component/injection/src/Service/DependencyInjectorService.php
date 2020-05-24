@@ -45,6 +45,10 @@ class DependencyInjectorService implements InjectorServiceInterface
                 $dependObjects[] = $this;
                 continue;
             }
+            if ($interfaceClassName === PsrContainerInterface::class) {
+                $dependObjects[] = $this;
+                continue;
+            }
             if (\interface_exists($interfaceClassName)) {
                 $injectableObject = $container->getByInterfaceName($interfaceClassName);
                 if ($injectableObject === null && $optional === false) {
