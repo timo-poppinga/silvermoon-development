@@ -13,16 +13,14 @@
   ],
   "require": {
     "php": "~7.4.2",
-    "friendsofphp/php-cs-fixer": "3.0.x-dev",
-    "phpmd/phpmd" : "3.x-dev",
     "phpstan/phpstan": "^0.12.10",
     "thecodingmachine/phpstan-strict-rules": "^0.12.0"
   },
   "bin": [
     "binary/check",
-    "binary/check-php-style",
-    "binary/fix-php",
+    "binary/php-fix",
     "binary/php-md",
-    "binary/php-stan"
+    "binary/php-stan",
+    "binary/php-style"
   ]
 }

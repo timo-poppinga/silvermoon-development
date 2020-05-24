@@ -2433,7 +2433,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/development/code-quality-framework",
-                "reference": "ebcb919d08bf48a1e44b2ab41719806f71507fcc"
+                "reference": "076f1b4a21e2d12827486a6149793c0bfd873703"
             },
             "require": {
                 "friendsofphp/php-cs-fixer": "3.0.x-dev",
@@ -2444,10 +2444,10 @@
             },
             "bin": [
                 "binary/check",
-                "binary/check-php-style",
-                "binary/fix-php",
+                "binary/php-fix",
                 "binary/php-md",
-                "binary/php-stan"
+                "binary/php-stan",
+                "binary/php-style"
             ],
             "type": "silvermoon-development",
             "license": [
@@ -2603,12 +2603,15 @@
             "dist": {
                 "type": "path",
                 "url": "packages/component/injection",
-                "reference": "33db87aba2bacc4c8496d7c44ac79afa48ee0e84"
+                "reference": "1e6171fa0bae58480bb8141a9e85293ef4e37fcb"
             },
             "require": {
                 "php": "~7.4.2",
                 "silvermoon/contracts-injection": "*",
                 "silvermoon/exception": "*"
+            },
+            "provide": {
+                "psr/container-implementation": "^1.0"
             },
             "type": "silvermoon-component",
             "autoload": {

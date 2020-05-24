@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-bin/sm-php-code-style && \
-bin/sm-php-md && \
-bin/sm-php-stan && \
-bin/sm-php-unit
+bin/php-style && \
+bin/php-md && \
+bin/php-stan
