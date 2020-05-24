@@ -14,6 +14,7 @@ use SilvermoonTests\Injection\Fixtures\Monitor;
 use SilvermoonTests\Injection\Fixtures\Service\PlayGroundService;
 use SilvermoonTests\Injection\Fixtures\Service\ScoreService;
 use SilvermoonTests\Injection\Fixtures\Service\ScoreServiceInterface;
+use SilvermoonTests\Injection\Fixtures\Service\ToolWithContainerService;
 
 class SimpleContainerTest extends BaseUnitTest
 {
@@ -148,5 +149,17 @@ class SimpleContainerTest extends BaseUnitTest
         /** @var GreenDisplay $greenDisplay */
         $greenDisplay = $this->simpleContainer->getByClassName(GreenDisplay::class);
         $this->assertInstanceOf(Display::class, $greenDisplay->display);
+    }
+
+    /**
+     * @throws ImplementationDoesNotExistsException
+     * @throws WrongTypeException
+     */
+    public function testInjectionOfContainer()
+    {
+        /** @var ToolWithContainerService $toolWithContainerService */
+        $toolWithContainerService = $this->simpleContainer->getByClassName(ToolWithContainerService::class);
+        $this->assertInstanceOf(SimpleContainer::class, $toolWithContainerService->container);
+        $this->assertInstanceOf(SimpleContainer::class, $toolWithContainerService->psrContainer);
     }
 }

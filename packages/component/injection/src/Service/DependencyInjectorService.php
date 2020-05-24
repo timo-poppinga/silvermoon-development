@@ -42,11 +42,11 @@ class DependencyInjectorService implements InjectorServiceInterface
             $interfaceClassName = $injectable['dependency'];
             $optional = $injectable['optional'];
             if ($interfaceClassName === ContainerInterface::class) {
-                $dependObjects[] = $this;
+                $injectableObjects[] = $container;
                 continue;
             }
             if ($interfaceClassName === PsrContainerInterface::class) {
-                $dependObjects[] = $this;
+                $injectableObjects[] = $container;
                 continue;
             }
             if (\interface_exists($interfaceClassName)) {
