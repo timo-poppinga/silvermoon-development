@@ -37,7 +37,7 @@ class _DirectoryHelperTest extends BaseUnitTest
 
     public function testLoadDirectoriesInDepthTowFull()
     {
-        $directories = _DirectoryHelper::directoriesInPath($this->examplePath, 1, 0, true);
+        $directories = _DirectoryHelper::directoriesInPathAbsolutePath($this->examplePath, 1, 0);
         $this->assertSame([
             $this->examplePath . '/Helpers',
             $this->examplePath . '/Services',

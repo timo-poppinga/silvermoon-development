@@ -6,21 +6,44 @@ namespace Silvermoon\Configuration\Helper;
 use Silvermoon\Configuration\Exception\InvalidNameException;
 
 /**
- * Class ConfigMergeHelper
+ * Class _ConfigMergeHelper
  */
-class ConfigMergeHelper
+class _ConfigMergeHelper
 {
+    /**
+     * @param array<mixed> $configuration
+     * @param array<mixed> $configurationToAdd
+     * @return array<mixed>
+     */
     public static function mergeConfigRecursive(array $configuration, array $configurationToAdd): array
     {
-        foreach ($configurationToAdd as $key => $item) {
-            if (\is_array($item)) {
+        self::_mergeConfigRecursive($configuration, $configurationToAdd);
+        return $configuration;
+    }
+
+    /**
+     * @param array<mixed> $configuration
+     * @param array<mixed> $configurationToAdd
+     * @throws InvalidNameException
+     */
+    protected static function _mergeConfigRecursive(array &$configuration, array &$configurationToAdd): void
+    {
+        foreach ($configurationToAdd as $key => $value) {
+            $parsedKey = self::parseKey($key);
+            if (\array_key_exists($key, $configuration) === false) {
+                $configuration[$key] = [];
             }
+            if (\is_array($value) && $parsedKey['type'] === 'standard') {
+                self::_mergeConfigRecursive($configuration[$key], $value);
+                continue;
+            }
+            $configuration[$key] = $value;
         }
     }
 
     /**
      * @param string $key
-     * @return array
+     * @return array<mixed>
      * @throws InvalidNameException
      */
     protected static function parseKey(string $key): array
@@ -28,10 +51,11 @@ class ConfigMergeHelper
         $result = [];
         $result['type'] = 'standard';
         $result['name'] = $key;
+        $result['dataType'] = '';
 
         if (substr($key, -1) === ']') {
             $result['type'] = 'array';
-            $openPosition = \strpos($key, '[');
+            $openPosition = (int) \strpos($key, '[');
             $result['name'] = \substr($key, 0, $openPosition);
             $result['dataType'] = \substr($key, $openPosition + 1, -1);
             if ($result['dataType'] === '+') {
@@ -40,7 +64,7 @@ class ConfigMergeHelper
         }
         if (substr($key, -1) === '>') {
             $result['type'] = 'object';
-            $openPosition = \strpos($key, '<');
+            $openPosition = (int) \strpos($key, '<');
             $result['name'] = \substr($key, 0, $openPosition);
             $result['dataType'] = \substr($key, $openPosition + 1, -1);
         }

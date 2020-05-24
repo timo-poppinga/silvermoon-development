@@ -7,7 +7,7 @@ use Silvermoon\Configuration\Exception\InvalidNameException;
 use Silvermoon\TestingFramework\BaseUnitTest;
 use SilvermoonTests\Configuration\Proxies\Helper\ConfigMergeHelperProxy;
 
-class ConfigMergeHelperTest extends BaseUnitTest
+class _ConfigMergeHelperTest extends BaseUnitTest
 {
     public function testParseKeyInvalidNameStartWitchNumber()
     {
@@ -52,5 +52,32 @@ class ConfigMergeHelperTest extends BaseUnitTest
         $this->assertIsArray($result);
         $this->assertSame('arrayAdd', $result['type']);
         $this->assertSame('+', $result['dataType']);
+    }
+
+    public function testMergeConfigRecursive()
+    {
+        $configuration = [
+            'config' => [
+                'planets[string]' => [
+                    'jupiter',
+                    'mercury',
+                    'neptune',
+                    'pluto',
+                ],
+            ],
+        ];
+        $configurationToAdd = [
+            'config' => [
+                'stars' => 'Hallo'
+            ]
+        ];
+        ConfigMergeHelperProxy::_mergeConfigRecursive($configuration, $configurationToAdd);
+        $configurationToAdd = [
+            'config' => [
+                'stars' => 'Hello World!'
+            ]
+        ];
+        ConfigMergeHelperProxy::_mergeConfigRecursive($configuration, $configurationToAdd);
+        $this->assertSame([], $configuration);
     }
 }

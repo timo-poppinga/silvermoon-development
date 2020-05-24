@@ -8,6 +8,9 @@ namespace Silvermoon\Configuration;
  */
 class Configuration
 {
+    /**
+     * @var array<mixed>
+     */
     protected array $currentConfig = [];
 
     /**
@@ -41,12 +44,11 @@ class Configuration
         return $currentConfigPosition;
     }
 
-
     /**
      * @param string $path
-     * @param $value
+     * @param mixed $value
      */
-    public function setConfiguration(string $path, $value)
+    public function setConfiguration(string $path, $value): void
     {
         $pathArray = \explode('/', $path);
         $currentConfigPosition = &$this->currentConfig;

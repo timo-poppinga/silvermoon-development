@@ -20,5 +20,8 @@
     "psr-4": {
       "Silvermoon\\Injection\\": "src/"
     }
+  },
+  "provide": {
+    "psr/container-implementation": "^1.0"
   }
 }

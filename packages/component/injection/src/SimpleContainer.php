@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Silvermoon\Injection;
 
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\NotFoundExceptionInterface;
 use Silvermoon\Contracts\Injection\ContainerInterface;
 use Silvermoon\Contracts\Injection\InjectorServiceInterface;
 use Silvermoon\Contracts\Injection\SingletonInterface;
@@ -37,13 +39,39 @@ class SimpleContainer implements ContainerInterface
     }
 
     /**
+     * @param string $id
+     * @return mixed|object|null
+     * @throws ImplementationDoesNotExistsException
+     * @throws WrongTypeException
+     */
+    public function get($id)
+    {
+        if(\interface_exists($id) === true) {
+            return $this->getByInterfaceName($id);
+        }
+        return $this->getByClassName($id);
+    }
+
+    /**
+     * @param string $id
+     * @return bool
+     */
+    public function has($id)
+    {
+        if(\interface_exists($id) === true) {
+            return \array_key_exists($id, $this->mapInterfaceToClass);
+        }
+        return \class_exists($id);
+    }
+
+    /**
      * @param string $interfaceName
      * @return object|null
      * @throws ImplementationDoesNotExistsException
      * @throws ImplementationDoesNotExistsException
      * @throws WrongTypeException
      */
-    public function getByInterface(string $interfaceName): ?object
+    public function getByInterfaceName(string $interfaceName): ?object
     {
         if (!\array_key_exists($interfaceName, $this->mapInterfaceToClass)) {
             return null;
@@ -60,7 +88,7 @@ class SimpleContainer implements ContainerInterface
      * @throws ImplementationDoesNotExistsException
      * @throws WrongTypeException
      */
-    public function get(string $className, ...$constructorArguments): object
+    public function getByClassName(string $className, ...$constructorArguments): object
     {
         if (\array_key_exists($className, $this->singletonArray)) {
             return $this->singletonArray[$className];
@@ -159,6 +187,7 @@ class SimpleContainer implements ContainerInterface
                 try {
                     $info['defaultValue'] = $reflectionParameter->getDefaultValue();
                 } catch (\ReflectionException $e) {
+                    // @ignoreException
                 }
             }
             $out[] = $info;

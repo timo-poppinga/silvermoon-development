@@ -12,21 +12,29 @@ class _DirectoryHelper
      * @param string $path
      * @param int $depth
      * @param int $startAtDepth
-     * @param bool $absolutePath
-     * @return string[]
+     * @return array
      */
-    public static function directoriesInPath(string $path, int $depth = 0, int $startAtDepth = 0, bool $absolutePath = false): array
+    public static function directoriesInPath(string $path, int $depth = 0, int $startAtDepth = 0): array
     {
         $realpathPath = \realpath($path);
-        $directories = self::_directoriesInPath($realpathPath, $depth, $startAtDepth);
-        if ($absolutePath === true) {
-            return $directories;
-        }
+        $directories = self::directoriesInPathAbsolutePath($realpathPath, $depth, $startAtDepth);
         $relativeDirectories = [];
         foreach ($directories as $directory) {
             $relativeDirectories[] = substr($directory, strlen($realpathPath) + 1);
         }
         return $relativeDirectories;
+    }
+
+    /**
+     * @param string $path
+     * @param int $depth
+     * @param int $startAtDepth
+     * @return array
+     */
+    public static function directoriesInPathAbsolutePath(string $path, int $depth = 0, int $startAtDepth = 0): array
+    {
+        $realpathPath = \realpath($path);
+        return self::_directoriesInPath($realpathPath, $depth, $startAtDepth);
     }
 
     /**

@@ -21,7 +21,7 @@ interface InjectorServiceInterface
 
     /**
      * @param string $className
-     * @param array $injectables
+     * @param array<array> $injectables
      * @param ContainerInterface $container
      * @return mixed[]
      */

@@ -47,7 +47,7 @@ class _FileHelperTest extends BaseUnitTest
     public function testFilesInPathDirectoryAbsolutePath()
     {
         $path = $this->examplePath . '/planet/jupiter/configuration';
-        $files = _FileHelper::filesInPath($path, null, true);
+        $files = _FileHelper::filesInPathAbsolutePath($path, null);
         $this->assertCount(3, $files);
         $this->assertSame($path . '/Color.txt', $files[0]);
         $this->assertSame($path . '/Size.yaml', $files[1]);

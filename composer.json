@@ -19,6 +19,8 @@
   ],
   "require": {
     "php": "~7.4.2",
+    "roave/security-advisories": "dev-master",
+
     "silvermoon/contracts-injection": "@dev",
     "silvermoon/contracts-configuration": "@dev",
 
