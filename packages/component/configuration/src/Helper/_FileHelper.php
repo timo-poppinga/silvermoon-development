@@ -19,7 +19,7 @@ class _FileHelper
     public static function filesInPathAbsolutePath(string $path, ?string $fileExtensionFilter = null): array
     {
         $realpathPath = \realpath($path);
-        if($realpathPath === false) {
+        if ($realpathPath === false) {
             throw new PathNotFoundException();
         }
         $files = self::filesInPath($realpathPath, $fileExtensionFilter);
@@ -46,7 +46,7 @@ class _FileHelper
             return [];
         }
         $directoryItems = \scandir($realpathPath);
-        if($directoryItems === false) {
+        if ($directoryItems === false) {
             throw new PathNotFoundException();
         }
         $files = [];

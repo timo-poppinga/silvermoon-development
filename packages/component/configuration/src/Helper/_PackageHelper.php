@@ -41,7 +41,7 @@ class _PackageHelper
             return null;
         }
         $composerContent = \file_get_contents($composerFile);
-        if($composerContent === false) {
+        if ($composerContent === false) {
             throw new FileNotFoundException();
         }
         $composerData = \json_decode($composerContent, true);

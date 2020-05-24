@@ -31,7 +31,7 @@ class ConfigurationLoader
             $configuration = $this->loadYamlFileAndMergeWitchConfiguration($configuration, $pathToYamlFile);
         }
         $path = \realpath($rootPath . '/' . $vendorPath);
-        if($path === false) {
+        if ($path === false) {
             throw new PathNotFoundException();
         }
         $packages = _PackageHelper::packagesInPath($path);
@@ -60,7 +60,7 @@ class ConfigurationLoader
             return $configuration;
         }
         $fileContent = \file_get_contents($pathToYamlFile);
-        if($fileContent === false) {
+        if ($fileContent === false) {
             throw new FileNotFoundException();
         }
         $newConfiguration = Yaml::parse($fileContent);

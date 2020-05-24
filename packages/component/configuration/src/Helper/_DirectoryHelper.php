@@ -20,7 +20,7 @@ class _DirectoryHelper
     public static function directoriesInPath(string $path, int $depth = 0, int $startAtDepth = 0): array
     {
         $realpathPath = \realpath($path);
-        if($realpathPath === false) {
+        if ($realpathPath === false) {
             throw new PathNotFoundException();
         }
         $directories = self::directoriesInPathAbsolutePath($realpathPath, $depth, $startAtDepth);
@@ -41,7 +41,7 @@ class _DirectoryHelper
     public static function directoriesInPathAbsolutePath(string $path, int $depth = 0, int $startAtDepth = 0): array
     {
         $realpathPath = \realpath($path);
-        if($realpathPath === false) {
+        if ($realpathPath === false) {
             throw new PathNotFoundException();
         }
         return self::_directoriesInPath($realpathPath, $depth, $startAtDepth);
@@ -60,14 +60,14 @@ class _DirectoryHelper
         $directories = [];
         if (\is_dir($path)) {
             $directoryNames = scandir($path);
-            if($directoryNames === false) {
+            if ($directoryNames === false) {
                 throw new PathNotFoundException();
             }
             foreach ($directoryNames as $directoryName) {
                 if (\is_dir($path . '/' . $directoryName) && $directoryName !== '..' && $directoryName !== '.') {
                     if ($startAtDepth <= $currentDepth) {
                         $realPath = \realpath($path . '/' . $directoryName);
-                        if($realPath === false) {
+                        if ($realPath === false) {
                             throw new PathNotFoundException();
                         }
                         $directories[] = $realPath;

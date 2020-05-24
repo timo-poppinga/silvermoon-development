@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace Silvermoon\Injection;
 
-use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 use Silvermoon\Contracts\Injection\ContainerInterface;
 use Silvermoon\Contracts\Injection\InjectorServiceInterface;
 use Silvermoon\Contracts\Injection\SingletonInterface;
@@ -46,7 +44,7 @@ class SimpleContainer implements ContainerInterface
      */
     public function get($id)
     {
-        if(\interface_exists($id) === true) {
+        if (\interface_exists($id) === true) {
             return $this->getByInterfaceName($id);
         }
         return $this->getByClassName($id);
@@ -58,7 +56,7 @@ class SimpleContainer implements ContainerInterface
      */
     public function has($id)
     {
-        if(\interface_exists($id) === true) {
+        if (\interface_exists($id) === true) {
             return \array_key_exists($id, $this->mapInterfaceToClass);
         }
         return \class_exists($id);
