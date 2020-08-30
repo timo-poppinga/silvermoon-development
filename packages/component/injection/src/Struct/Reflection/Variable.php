@@ -15,5 +15,8 @@ class Variable
 
     public bool $isDefaultValueAvailable = false;
 
-    public mixed $defaultValue;
+    /**
+     * @phpstan-ignore-next-line default value can all base values
+     */
+    public $defaultValue;
 }

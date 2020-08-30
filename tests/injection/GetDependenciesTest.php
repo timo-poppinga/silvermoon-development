@@ -24,19 +24,19 @@ class GetDependenciesTest extends BaseUnitTest
 
     public function testInjectNothing()
     {
-        $out = $this->simpleContainer->getInjectables(MultiDependencies::class, 'injectNothing');
+        $out = $this->simpleContainer->readInjectables(MultiDependencies::class, 'injectNothing');
         $this->assertCount(0, $out);
     }
 
     public function testInjectNothingNoMethod()
     {
-        $out = $this->simpleContainer->getInjectables(MultiDependencies::class, 'injectNothingNoMethod');
+        $out = $this->simpleContainer->readInjectables(MultiDependencies::class, 'injectNothingNoMethod');
         $this->assertCount(0, $out);
     }
 
     public function testInjectNullableInterface()
     {
-        $out = $this->simpleContainer->getInjectables(MultiDependencies::class, 'injectNullableInterface');
+        $out = $this->simpleContainer->readInjectables(MultiDependencies::class, 'injectNullableInterface')[0]['injectStruct'];
         $this->assertCount(1, $out);
 
         $first = $out[0];
@@ -49,7 +49,7 @@ class GetDependenciesTest extends BaseUnitTest
 
     public function testInjectMulti()
     {
-        $out = $this->simpleContainer->getInjectables(MultiDependencies::class, 'injectMulti');
+        $out = $this->simpleContainer->readInjectables(MultiDependencies::class, 'injectMulti')[0]['injectStruct'];
         $this->assertCount(2, $out);
         $part01 = $out[0];
         $part02 = $out[1];
@@ -71,7 +71,7 @@ class GetDependenciesTest extends BaseUnitTest
 
     public function testInjectBaseType()
     {
-        $out = $this->simpleContainer->getInjectables(MultiDependencies::class, 'injectBaseType');
+        $out = $this->simpleContainer->readInjectables(MultiDependencies::class, 'injectBaseType')[0]['injectStruct'];
         $this->assertCount(2, $out);
         $part01 = $out[0];
         $part02 = $out[1];
@@ -90,7 +90,7 @@ class GetDependenciesTest extends BaseUnitTest
 
     public function testInjectMultiBaseType()
     {
-        $out = $this->simpleContainer->getInjectables(MultiDependencies::class, 'injectMultiBaseType');
+        $out = $this->simpleContainer->readInjectables(MultiDependencies::class, 'injectMultiBaseType')[0]['injectStruct'];
         $this->assertCount(3, $out);
         $part01 = $out[0];
         $part02 = $out[1];

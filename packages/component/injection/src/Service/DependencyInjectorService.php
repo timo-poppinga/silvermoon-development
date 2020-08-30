@@ -25,17 +25,17 @@ class DependencyInjectorService implements InjectorServiceInterface
 
     /**
      * @param string $className
-     * @param array<array> $injectables
+     * @param array[] $injectStruct
      * @param ContainerInterface $container
      * @return array<mixed>
      * @throws ConfigurationException
      * @throws ImplementationDoesNotExistsException
      * @throws WrongTypeException
      */
-    public function injector(string $className, array $injectables, ContainerInterface $container): array
+    public function injector(string $className, array $injectStruct, ContainerInterface $container): array
     {
         $injectableObjects = [];
-        foreach ($injectables as $injectable) {
+        foreach ($injectStruct as $injectable) {
             if ($injectable['type'] !== 'class') {
                 throw new WrongTypeException('The injectable must be an class or interface');
             }

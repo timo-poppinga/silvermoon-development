@@ -11,7 +11,6 @@ use Silvermoon\Injection\Exception\InterfaceDoesNotExistsException;
 use Silvermoon\Injection\Exception\WrongTypeException;
 use Silvermoon\Injection\Service\DependencyInjectorService;
 use Silvermoon\Injection\Struct\Reflection\Method;
-use Silvermoon\Injection\Struct\Reflection\Variable;
 use Silvermoon\Injection\Utility\ReflectionUtility;
 
 /**
@@ -101,15 +100,16 @@ class SimpleContainer implements ContainerInterface
             throw new ImplementationDoesNotExistsException('The Class ' . $className . ' does not exists.');
         }
         $newObject = new $className(...$constructorArguments);
-        /** @var  InjectorServiceInterface $injectorService */
+
         foreach ($this->injectorServices as $injectorService) {
             $methodNameToInject = $injectorService->methodNameToInject();
-            $injectables = $this->getInjectables($className, $methodNameToInject);
-            if (\count($injectables) === 0) {
-                continue;
+            $injectables = $this->readInjectables($className, $methodNameToInject);
+            foreach ($injectables as $injectable) {
+                $injectStruct = $injectable['injectStruct'];
+                $methodName = $injectable['methodName'];
+                $injectableObjects = $injectorService->injector($className, $injectStruct, $this);
+                $newObject->$methodName(...$injectableObjects);
             }
-            $injectableObjects = $injectorService->injector($className, $injectables, $this);
-            $newObject->$methodNameToInject(...$injectableObjects);
         }
 
         $this->checkForSingletonInterface($className, $newObject);
@@ -149,28 +149,40 @@ class SimpleContainer implements ContainerInterface
     }
 
     /**
-     * @param class-string $className
-     * @param string $methodName
+     * @param string $className
+     * @param string $prefixMethodName
      * @return array[]
+     * @throws Exception\ReflectionParseException
      */
-    protected function getInjectables(string $className, string $methodName = 'inject'): array
+    protected function readInjectables(string $className, string $prefixMethodName = 'inject'): array
     {
-        $out = [];
+        $injectables = [];
         $reflection = $this->reflectionUtility->parseClass($className);
         $method = null;
         /** @var Method $currentMethod */
         foreach ($reflection->methods as $currentMethod) {
-            if ($currentMethod->name === $methodName) {
-                $method = $currentMethod;
-                break;
+            if (strpos($currentMethod->name, $prefixMethodName) !== 0) {
+                continue;
             }
+            $injectStruct = $this->readInjectStruct($currentMethod);
+            if (\count($injectStruct) === 0) {
+                continue;
+            }
+            $injectables[] = [
+                'methodName' => $currentMethod->name,
+                'injectStruct' => $injectStruct,
+            ];
         }
+        return $injectables;
+    }
 
-        if ($method === null) {
-            return $out;
-        }
-
-        /** @var Variable $parameter */
+    /**
+     * @param Method $method
+     * @return array[]
+     */
+    protected function readInjectStruct(Method $method): array
+    {
+        $injectStruct = [];
         foreach ($method->parameters as $parameter) {
             $info = [];
             $info['name'] = $parameter->name;
@@ -183,9 +195,9 @@ class SimpleContainer implements ContainerInterface
                 $info['type'] =  'class';
                 $info['dependency'] = $parameter->type;
             }
-            $out[] = $info;
+            $injectStruct[] = $info;
         }
-        return $out;
+        return $injectStruct;
     }
 
     /**
