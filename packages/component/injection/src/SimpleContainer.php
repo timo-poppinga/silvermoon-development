@@ -10,6 +10,9 @@ use Silvermoon\Injection\Exception\ImplementationDoesNotExistsException;
 use Silvermoon\Injection\Exception\InterfaceDoesNotExistsException;
 use Silvermoon\Injection\Exception\WrongTypeException;
 use Silvermoon\Injection\Service\DependencyInjectorService;
+use Silvermoon\Injection\Struct\Reflection\Method;
+use Silvermoon\Injection\Struct\Reflection\Variable;
+use Silvermoon\Injection\Utility\ReflectionUtility;
 
 /**
  * Class SimpleContainer
@@ -26,6 +29,8 @@ class SimpleContainer implements ContainerInterface
      */
     protected array $singletonArray = [];
 
+    protected ReflectionUtility $reflectionUtility;
+
     /**
      * @var InjectorServiceInterface[]
      */
@@ -34,6 +39,7 @@ class SimpleContainer implements ContainerInterface
     public function __construct()
     {
         $this->injectorServices[] = new DependencyInjectorService();
+        $this->reflectionUtility = new ReflectionUtility();
     }
 
     /**
@@ -142,7 +148,6 @@ class SimpleContainer implements ContainerInterface
         }
     }
 
-
     /**
      * @param class-string $className
      * @param string $methodName
@@ -150,43 +155,33 @@ class SimpleContainer implements ContainerInterface
      */
     protected function getInjectables(string $className, string $methodName = 'inject'): array
     {
-        try {
-            $reflectionClass = new \ReflectionClass($className);
-        } catch (\ReflectionException $e) {
-            return [];
-        }
-        $hasInjectMethod = $reflectionClass->hasMethod($methodName);
-        if ($hasInjectMethod === false) {
-            return [];
-        }
-        try {
-            $injectionMethod = $reflectionClass->getMethod($methodName);
-        } catch (\ReflectionException $e) {
-            return [];
-        }
         $out = [];
-        $reflectionParameters = $injectionMethod->getParameters();
-        /** @var \ReflectionParameter $reflectionParameter */
-        foreach ($reflectionParameters as $reflectionParameter) {
+        $reflection = $this->reflectionUtility->parseClass($className);
+        $method = null;
+        /** @var Method $currentMethod */
+        foreach ($reflection->methods as $currentMethod) {
+            if ($currentMethod->name === $methodName) {
+                $method = $currentMethod;
+                break;
+            }
+        }
+
+        if ($method === null) {
+            return $out;
+        }
+
+        /** @var Variable $parameter */
+        foreach ($method->parameters as $parameter) {
             $info = [];
-            $interfaceClass = $reflectionParameter->getClass();
-            $type = $reflectionParameter->getType();
-            $info['name'] = $reflectionParameter->getName();
-            $info['type'] = (string) $type;
-            $info['optional'] = false;
-            if ($interfaceClass !== null) {
+            $info['name'] = $parameter->name;
+            $info['type'] = $parameter->type;
+            $info['optional'] = $parameter->isAllowsNull;
+            if ($parameter->isDefaultValueAvailable) {
+                $info['defaultValue'] = $parameter->defaultValue;
+            }
+            if ($parameter->isBuiltin === false) {
                 $info['type'] =  'class';
-                $info['dependency'] = $interfaceClass->getName();
-            }
-            if ($type !== null) {
-                $info['optional'] = $type->allowsNull();
-            }
-            if ($reflectionParameter->isDefaultValueAvailable()) {
-                try {
-                    $info['defaultValue'] = $reflectionParameter->getDefaultValue();
-                } catch (\ReflectionException $e) {
-                    // @ignoreException
-                }
+                $info['dependency'] = $parameter->type;
             }
             $out[] = $info;
         }

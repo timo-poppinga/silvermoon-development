@@ -18,6 +18,7 @@ function remote()
 
 git pull origin $CURRENT_BRANCH
 
+remote contracts-exception git@github.com:silvermoon-framework/contracts-exception.git
 remote contracts-injection git@github.com:silvermoon-framework/contracts-injection.git
 remote contracts-configuration git@github.com:silvermoon-framework/contracts-configuration.git
 
@@ -28,6 +29,7 @@ remote configuration git@github.com:silvermoon-framework/configuration.git
 remote code-quality-framework git@github.com:silvermoon-framework/code-quality-framework.git
 remote testing-framework git@github.com:silvermoon-framework/testing-framework.git
 
+split 'packages/contracts/contracts-exception' contracts-exception
 split 'packages/contracts/contracts-injection' contracts-injection
 split 'packages/contracts/contracts-configuration' contracts-configuration
 
