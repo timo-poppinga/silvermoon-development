@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Silvermoon\Exception;
 
-class SystemException extends BaseException
+use Silvermoon\Contracts\Exception\SystemExceptionInterface;
+
+class SystemException extends BaseException implements SystemExceptionInterface
 {
 }

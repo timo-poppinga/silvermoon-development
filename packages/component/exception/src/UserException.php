@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Silvermoon\Exception;
 
-class UserException extends BaseException
+use Silvermoon\Contracts\Exception\UserExceptionInterface;
+
+class UserException extends BaseException implements UserExceptionInterface
 {
 }

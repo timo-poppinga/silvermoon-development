@@ -23,6 +23,7 @@
 
     "silvermoon/contracts-injection": "@dev",
     "silvermoon/contracts-configuration": "@dev",
+    "silvermoon/contracts-exception": "@dev",
 
     "silvermoon/injection": "@dev",
     "silvermoon/configuration": "@dev",
