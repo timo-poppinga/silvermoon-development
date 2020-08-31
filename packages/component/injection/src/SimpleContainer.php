@@ -189,7 +189,7 @@ class SimpleContainer implements ContainerInterface
      */
     protected function parseClass(string $className): Reflection
     {
-        if(\array_key_exists($className, $this->_cacheReflection)) {
+        if (\array_key_exists($className, $this->_cacheReflection)) {
             return $this->_cacheReflection[$className];
         }
         $reflection = $this->reflectionUtility->parseClass($className);
