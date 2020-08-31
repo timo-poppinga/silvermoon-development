@@ -2616,10 +2616,11 @@
             "dist": {
                 "type": "path",
                 "url": "packages/component/injection",
-                "reference": "10961e644f1214979ed069b47408322d249e9448"
+                "reference": "79524b2d7b70382833193db52124e5c37e245410"
             },
             "require": {
                 "php": "~7.4.2",
+                "phpdocumentor/reflection-docblock": "^5.2.1",
                 "silvermoon/contracts-injection": "*",
                 "silvermoon/exception": "*"
             },

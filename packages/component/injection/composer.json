@@ -14,7 +14,8 @@
   "require": {
     "php": "~7.4.2",
     "silvermoon/contracts-injection": "*",
-    "silvermoon/exception": "*"
+    "silvermoon/exception": "*",
+    "phpdocumentor/reflection-docblock": "^5.2.1"
   },
   "autoload": {
     "psr-4": {

@@ -10,6 +10,7 @@ use Silvermoon\Injection\Exception\ImplementationDoesNotExistsException;
 use Silvermoon\Injection\Exception\InterfaceDoesNotExistsException;
 use Silvermoon\Injection\Exception\WrongTypeException;
 use Silvermoon\Injection\Service\DependencyInjectorService;
+use Silvermoon\Injection\Struct\Reflection;
 use Silvermoon\Injection\Struct\Reflection\Method;
 use Silvermoon\Injection\Utility\ReflectionUtility;
 
@@ -34,6 +35,11 @@ class SimpleContainer implements ContainerInterface
      * @var InjectorServiceInterface[]
      */
     private array $injectorServices = [];
+
+    /**
+     * @var Reflection[]
+     */
+    private array $_cacheReflection = [];
 
     public function __construct()
     {
@@ -157,7 +163,7 @@ class SimpleContainer implements ContainerInterface
     protected function readInjectables(string $className, string $prefixMethodName = 'inject'): array
     {
         $injectables = [];
-        $reflection = $this->reflectionUtility->parseClass($className);
+        $reflection = $this->parseClass($className);
         $method = null;
         /** @var Method $currentMethod */
         foreach ($reflection->methods as $currentMethod) {
@@ -174,6 +180,21 @@ class SimpleContainer implements ContainerInterface
             ];
         }
         return $injectables;
+    }
+
+    /**
+     * @param string $className
+     * @return Reflection
+     * @throws Exception\ReflectionParseException
+     */
+    protected function parseClass(string $className): Reflection
+    {
+        if(\array_key_exists($className, $this->_cacheReflection)) {
+            return $this->_cacheReflection[$className];
+        }
+        $reflection = $this->reflectionUtility->parseClass($className);
+        $this->_cacheReflection[$className] = $reflection;
+        return $reflection;
     }
 
     /**
