@@ -103,7 +103,11 @@ class SimpleContainer implements ContainerInterface
             return $this->singletonArray[$className];
         }
         if (!\class_exists($className)) {
-            throw new ImplementationDoesNotExistsException('The Class ' . $className . ' does not exists.');
+            $r = \debug_backtrace();
+            $exception = new ImplementationDoesNotExistsException(1600530103);
+            $t = $exception->getTrace();
+
+            throw new ImplementationDoesNotExistsException(1600530103);
         }
         $newObject = new $className(...$constructorArguments);
 

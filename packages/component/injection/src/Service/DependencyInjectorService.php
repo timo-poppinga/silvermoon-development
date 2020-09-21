@@ -7,7 +7,7 @@ use Psr\Container\ContainerInterface as PsrContainerInterface;
 use Silvermoon\Contracts\Injection\ContainerInterface;
 use Silvermoon\Contracts\Injection\InjectorServiceInterface;
 use Silvermoon\Exception\ConfigurationException;
-use Silvermoon\Injection\Exception\ImplementationDoesNotExistsException;
+use Silvermoon\Injection\Exception\DependencyDoesNotExistException;
 use Silvermoon\Injection\Exception\WrongTypeException;
 
 /**
@@ -25,12 +25,9 @@ class DependencyInjectorService implements InjectorServiceInterface
 
     /**
      * @param string $className
-     * @param array[] $injectStruct
+     * @param array $injectStruct
      * @param ContainerInterface $container
-     * @return array<mixed>
-     * @throws ConfigurationException
-     * @throws ImplementationDoesNotExistsException
-     * @throws WrongTypeException
+     * @return array
      */
     public function injector(string $className, array $injectStruct, ContainerInterface $container): array
     {
@@ -52,7 +49,7 @@ class DependencyInjectorService implements InjectorServiceInterface
             if (\interface_exists($interfaceClassName)) {
                 $injectableObject = $container->getByInterfaceName($interfaceClassName);
                 if ($injectableObject === null && $optional === false) {
-                    throw new ImplementationDoesNotExistsException('No Implementation for the interface ' . $interfaceClassName . ' dependency does not exists. Please register.');
+                    throw new DependencyDoesNotExistException(1600529681);
                 }
                 $injectableObjects[] = $injectableObject;
                 continue;

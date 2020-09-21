@@ -33,6 +33,8 @@
     "silvermoon/testing-framework": "@dev",
     "silvermoon/code-quality-framework": "@dev",
 
+    "silvermoon/toolbox": "@dev",
+
     "silvermoon/release": "@dev"
   },
   "require-dev": {
@@ -44,7 +46,8 @@
   "autoload-dev": {
     "psr-4": {
       "SilvermoonTests\\Injection\\": "tests/injection",
-      "SilvermoonTests\\Configuration\\": "tests/configuration"
+      "SilvermoonTests\\Configuration\\": "tests/configuration",
+      "SilvermoonTests\\Toolbox\\": "tests/toolbox"
     }
   }
 }

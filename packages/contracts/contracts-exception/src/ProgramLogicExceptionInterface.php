@@ -6,6 +6,6 @@ namespace Silvermoon\Contracts\Exception;
 /**
  * Interface ProgramLogicExceptionInterface
  */
-interface ProgramLogicExceptionInterface extends BaseExceptionInterface
+interface ProgramLogicExceptionInterface extends \Throwable
 {
 }

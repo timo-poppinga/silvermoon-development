@@ -68,6 +68,10 @@ class ReflectionUtility implements SingletonInterface
         foreach ($reflectionMethods as $reflectionMethod) {
             $method = new Method();
             $method->name = $reflectionMethod->getName();
+            $docComment = $reflectionMethod->getDocComment();
+            if ($docComment !== false) {
+                $this->parseDocComment($docComment);
+            }
 
             /** @var \ReflectionNamedType $returnType */
             $returnType = $reflectionMethod->getReturnType();
@@ -84,10 +88,27 @@ class ReflectionUtility implements SingletonInterface
         }
     }
 
+    /**
+     * @param string $docComment
+     * @return Variable
+     */
+    protected function parseDocComment(string $docComment): Variable
+    {
+        $lines = \explode(PHP_EOL, $docComment);
+
+        if (\trim($lines[0]) === '/**') {
+        }
+
+        foreach ($lines as $line) {
+            $line = \trim($line);
+        }
+    }
+
 
     /**
      * @param \ReflectionParameter $parameter
      * @return Variable
+     * @throws \ReflectionException
      */
     protected function buildVariableForParameter(\ReflectionParameter $parameter): Variable
     {

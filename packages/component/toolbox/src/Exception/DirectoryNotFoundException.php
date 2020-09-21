@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Silvermoon\Injection\Exception;
+namespace Silvermoon\Toolbox\Exception;
 
 use Silvermoon\Exception\ProgramLogicException;
 
 /**
  * Class ClassDoesNotExistsException
  */
-class ClassDoesNotExistsException extends ProgramLogicException
+class DirectoryNotFoundException extends ProgramLogicException
 {
 }

@@ -3,11 +3,11 @@ declare(strict_types=1);
 
 namespace Silvermoon\Injection\Exception;
 
-use Silvermoon\Exception\System\ProgrammingLogicException;
+use Silvermoon\Exception\ProgramLogicException;
 
 /**
  * Class WrongTypeException
  */
-class WrongTypeException extends ProgrammingLogicException
+class WrongTypeException extends ProgramLogicException
 {
 }

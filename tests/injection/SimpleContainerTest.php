@@ -162,4 +162,14 @@ class SimpleContainerTest extends BaseUnitTest
         $this->assertInstanceOf(SimpleContainer::class, $toolWithContainerService->container);
         $this->assertInstanceOf(SimpleContainer::class, $toolWithContainerService->psrContainer);
     }
+
+
+    /**
+     *
+     */
+    public function testGetClassNotExist(): void
+    {
+        self::expectException(ImplementationDoesNotExistsException::class);
+        $this->simpleContainer->getByClassName(ToolWithContainerService::class . 'x');
+    }
 }

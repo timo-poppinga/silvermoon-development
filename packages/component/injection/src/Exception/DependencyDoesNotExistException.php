@@ -6,8 +6,8 @@ namespace Silvermoon\Injection\Exception;
 use Silvermoon\Exception\ProgramLogicException;
 
 /**
- * Class InterfaceDoesNotExistsException
+ * Class DependencyDoesNotExistException
  */
-class InterfaceDoesNotExistsException extends ProgramLogicException
+class DependencyDoesNotExistException extends ProgramLogicException
 {
 }

@@ -6,8 +6,8 @@ namespace Silvermoon\Configuration\Exception;
 use Silvermoon\Exception\ProgramLogicException;
 
 /**
- * Class InvalidNameException
+ * Class ComposerFileNotFoundException
  */
-class InvalidNameException extends ProgramLogicException
+class ConfigurationFileNotFoundException extends ProgramLogicException
 {
 }

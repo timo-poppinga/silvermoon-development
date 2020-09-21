@@ -6,7 +6,7 @@ namespace Silvermoon\Injection\Exception;
 use Silvermoon\Exception\ProgramLogicException;
 
 /**
- * Class ReflectionPaserException
+ * Class ReflectionParseException
  */
 class ReflectionParseException extends ProgramLogicException
 {
